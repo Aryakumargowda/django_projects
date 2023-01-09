@@ -1,4 +1,5 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
+from .models import Login,Registered_user
 
 flag=0
 def home(request):
@@ -10,7 +11,7 @@ def login(request):
         username=request.POST['username']
         password=request.POST['password']  
         flag=1
-        chk=Register.objects.all()
+        chk=Registered_user.objects.all()
         for i in chk:
             if i.username==username and i.password==password:
                 flag=1
@@ -19,19 +20,36 @@ def login(request):
     return render(request, 'first_vs/login.html',{'flag':flag})
     
 def reg(request):
+    flag=0
     if request.method=="POST":
-        name1=request.POST['name1']
-        username=request.POST['username']
-        password=request.POST['password']
+        fname=request.POST['fname']
+        lname=request.POST['lname']
+        phone=request.POST['phone']
+        adder=request.POST['add']
+        username=request.POST['userid']
+        password=request.POST['pass']
+        password1=request.POST['pass1']
 
-        register=Register(name1=name1,username=username,password=password)
-        register.save()
-        return redirect('show')
-    return render(request, 'first_vs/register.html')
+        chk=Registered_user.objects.all()
+        for i in chk:
+            if i.userid==username:
+                err="Username already exist"
+                flag=1
+                return render(request, 'first_vs/register.html',{'err':err})
+        if flag==0:
+            register=Registered_user(fname=fname,lname=lname,phone=phone,adder=adder,userid=username,pwd1=password,pwd2=password1)
+            if password==password1:
+                register.save()
+                return redirect('home')
+            else:
+                err="Both of the password Should be same"
+                return render(request, 'first_vs/register.html',{'err':err})
+    return render(request, 'first_vs/register.html',{})
+            
 
 
-def login(request):
-    return render(request, 'first_vs/login.html')
+# def login(request):
+#     return render(request, 'first_vs/login.html')
 
 def register(request):
     return render(request, 'first_vs/register.html')

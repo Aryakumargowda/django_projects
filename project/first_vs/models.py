@@ -9,10 +9,10 @@ class Registered_user(models.Model):
     lname=models.CharField(max_length=50,unique=True,null=False)
     phone=models.CharField(max_length=40)
     adder=models.TextField(max_length=500)
-    userid=models.CharField(max_length=20)
+    userid=models.CharField(max_length=20,unique=True)
     pwd1=models.CharField(max_length=60)
     pwd2=models.CharField(max_length=60)
     def __str__(self):
-        return self.name1
+        return self.userid
 
 # Create your models here.
