@@ -1,0 +1,232 @@
+*{
+    padding: 0;
+    margin: 0;
+    font-family: 'poppins',sans-serif;
+}
+/* --------------------------header------------------------ */
+header{
+    width: auto;
+    min-height: 5em;
+    background: linear-gradient(to right, rgb(77, 76, 76),rgb(29, 28, 29));
+    padding-left: 1em;
+    padding-right: 1em;
+    z-index: 2;
+}
+
+.head{
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+}
+
+.logo img{
+    width: 3.5em;
+    height: 3.5em;
+    transition: .3s;
+}
+
+.logo img:hover{
+    width: 3.7em;
+    height: 3.7em;
+    box-shadow: 10px 0px 15px rgb(80, 69, 69);
+    border-radius: 1em;
+
+}
+
+.left{
+    padding: .4em;
+}
+
+.right ul{
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-right: 1.5em;
+    padding-top: .5em;
+}
+
+
+
+.right ul img{
+    width: 1.3em;
+    height: 1.3em;
+}
+
+a{
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+}
+
+.right ul li{
+    position: relative;
+    width: 6em;
+    height: 2em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: .31em;
+    margin: .51em;
+    border-radius: .2em;
+    transition: .5s;
+}
+
+.right ul li:hover {
+    background: rgb(255, 255, 255);
+    width: 7em;
+    color: rgb(0, 0, 0);
+    
+}
+
+.text,.text1{
+
+    transition: .3s;
+}
+
+.right ul li:hover .text,.right ul li:hover .text1{
+    color: rgb(0, 0, 0);
+    text-shadow: 2px 2px 5px rgb(89, 93, 95),
+    -2px -2px 5px rgb(74, 77, 78);
+}
+
+main{
+    background: linear-gradient(to right, rgb(77, 76, 76),rgb(29, 28, 29));
+    padding: 5em;
+}
+
+.cards{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2em;
+}
+
+.control_bar{
+    display: flex;
+    align-items: center;
+    color: white;
+    margin: 2em;
+}
+
+.control_bar img{
+    padding: .4em;
+    margin: .61em;
+    cursor:pointer;
+}
+
+.contents{
+    width: 70em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.contents img{
+    width: 1.4em;
+    height: 1.4em;
+}
+
+.content1,.content2,.content3,.content4,.content5{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.content1{
+    background: rgba(255, 255, 255, 0.747);
+    max-height: 25em;
+    width: 30em;
+    border: 1.92px rgb(196, 194, 194) ;
+    border-style: ridge;
+    padding: 1.5em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 1em;
+    border-radius: 1.5em;
+    color: rgb(75, 61, 75);
+    z-index: 2;
+    opacity: 1;
+}
+
+.content5,.content2,.content3,.content4{
+    background: rgba(255, 255, 255, 0.747);
+    height: 0em; 
+    /* width: 0em; */
+    border: 1.92px rgb(196, 194, 194) ;
+    border-style: ridge;
+    font-size: .2em;
+    margin: 1em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1.5em;
+    overflow: hidden;
+    border-radius:  1.5em;
+    color: rgb(75, 61, 75);
+    z-index: 2;
+    transform: scale(0);
+    opacity: 0;
+    transition: .5s;
+}
+
+
+
+.content_slider.active,.content_slider1.active,.content_slider2.active,.content_slider3.active,.content_slider4.active{
+    transform: scale(1);
+    max-height: 25em;
+    min-width: 13em;
+    left: 20em;
+    opacity: 1
+}
+
+/* ------------------content-active---------------------- */
+
+.content2.active,.content3.active,.content4.active,.content5.active
+{ 
+    font-size: 1em;
+    transform: scale(1);
+    height: 20em;
+    width: 30em;
+    opacity: 1
+}
+
+/* -----------------control_bar div hover-------------- */
+
+.control_bar div:hover{
+    border-bottom: 3px solid rgba(255, 255, 255, 0.418);
+}
+
+/* -------------------footer---------------------- */
+.foot_container{
+    background: darkslategray;
+    color: white;
+    padding: 2em;
+}
+
+.foot_container h2{
+    color: rgb(242, 174, 106);
+    text-decoration:underline;
+}
+
+.login_sec ul{
+    list-style: none;
+    padding-right: 1.5em;
+    padding-top: .5em;
+}
+
+.login_sec ul a{
+    color: rgb(199, 155, 108);
+    line-height: 1em;
+    
+}
+
+.login_sec ul li{
+    padding: .5em;
+}
+
+.foot{
+    padding: 2em;
+    text-align: center;
+}

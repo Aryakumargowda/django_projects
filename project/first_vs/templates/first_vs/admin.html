@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin</title>
+    <link rel="stylesheet" href="{% static 'first_vs/admin.css' %}">
+</head>
+<body>
+    <header>
+        {% load static %}
+        {% load %}
+        <div class="head">
+            <div class="left">
+                <div class="logo"><a href="#"><img src="{% static 'first_vs/logos/tgp_white.png' %}" alt="logo"></a></div>
+            </div>
+            <div class="right">
+                <ul>
+                    <li>
+                       <a href="{% url 'hello' %}" rel="noopener noreferrer"><span class="text1">Profile</span></a></li>
+                    <li>
+                        <a href="#">
+                        <span class="text">Customers</span></a>
+                    </li>
+                    <li>
+                        <a href="#">
+                        <span class="text">Employees</span></a>
+                    </li>
+                    <li>
+                        <a href="#">
+                        <span class="text1">About</span></a>
+                    </li>
+
+                </ul>
+                
+            </div>
+        </div>
+    </header>
+    <main>
+        <div class="back">
+            
+            {% comment %} <img src="{% static 'first_vs/logos/blob.svg' %}" alt=""> {% endcomment %}
+        </div>
+        <div class="back1" >
+            
+            {% comment %} <img src="{% static 'first_vs/logos/blob (1).svg' %}" alt=""> {% endcomment %}
+        </div>
+        <div class="container_main">
+            <div class="side_cards">
+                <dvi class="right_card">
+                    <h3> You can add or delete employes through the <br> link given below</h3>
+                    <a href={% url 'login'%}>
+                        <p> Click Here </p></a>
+                </dvi>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

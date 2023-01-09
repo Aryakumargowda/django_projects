@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'first_vs/style.css' %}">
+</head>
+<body>
+    {% load static %}
+    <header>
+        <div class="head">
+            <div class="left">
+                <div class="logo"><a href="#"><img src="{% static 'first_vs/logos/tpg2.png'%}"alt="logo"></a></div>
+            </div>
+            <div class="right">
+                <ul>
+                    <li>
+                        <a href="#"><span class="log"><img src="{% static 'first_vs/logos/home.svg'%}"  alt=""></span>
+                        <span class="text1">Home</span></a></li>
+                    <li>
+                        <a href="#"><span class="log"><img src="{% static 'first_vs/logos/bag.svg'%}" alt=""></span>
+                        <span class="text">Collections</span></a>
+                    </li>
+                    <li>
+                        <a href="#"><span class="log"><img src="{% static 'first_vs/logos/phone.svg'%}" alt=""></span>
+                        <span class="text">Contact us</span></a>
+                    </li>
+                    <li>
+                        <a href="#"><span class="log"><img src="{% static 'first_vs/logos/question.svg'%}" alt=""></span>
+                        <span class="text1">About</span></a>
+                    </li>
+
+                </ul>
+                
+            </div>
+        </div>
+    </header>
+    <main>
+        <div class="main_container">
+            <div class="cards">
+                <form action="/index.php" method="post">
+                    <p> EmployeeID:</p>
+                    <input type="text" name="user" id="user" placeholder="EmployeeID:"> 
+                    <p>Password:</p>
+                    <input type="password" name="pass" id="pass" placeholder="Password:"> <br>
+                    <button type="submit"><img src="{% static 'first_vs/logos/publish.svg'%}" alt="submit"></button>
+                </form>
+            </div>
+            <div class="social_logos"> 
+                <div class="logos"><a href="www.facebook.com"><img src="{% static 'first_vs/logos/facebook.png' %}" alt="facebook"></a></div>
+                    <div class="logos"><img src="{% static 'first_vs/logos/instagram.png'%}" alt="Instagram"></div>
+                    <div class="logos"><img src="{% static 'first_vs/logos/twitter.png'%}" alt="Twitter"></div>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <div class="foot_container">
+            <div class="credits">
+                <h2>Credits:</h2>
+                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ducimus alias architecto sequi eius cumque, excepturi esse in officia temporibus, vero eaque, culpa error. Voluptatibus fugiat quos earum nam aliquid sint officia ab placeat adipisci eveniet, aut corporis.
+                    <br> <br> Molestias vel fuga earum voluptatibus. Quidem asperiores corrupti autem aut sit ad vero!</p>
+            </div>
+            <div class="login_sec">
+                <h2>Pages:</h2>
+                <ul>
+                    <li><a href="http://" target="_blank" rel="noopener noreferrer">Admin</a></li>
+                    <li><a href="http://" target="_blank" rel="noopener noreferrer">Employee</a></li>
+                    <li><a href="http://" target="_blank" rel="noopener noreferrer">User</a></li>
+                    <li><a href="http://" target="_blank" rel="noopener noreferrer">Privacy Policy</a></li>
+                    <li><a href="http://" target="_blank" rel="noopener noreferrer">Feedback</a></li>
+                </ul>
+            </div>
+            <div class="foot">
+               <p>Copyright ©️ 2022-2030 | TheProjectGarments | All rights reserved</p> 
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

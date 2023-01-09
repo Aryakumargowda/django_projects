@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static%}
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link rel="stylesheet" href="{%static 'first_vs/register.css' %}">
+</head>
+<body>
+    <header>
+        <div class="head">
+            <div class="left">
+                <div class="logo"><a href="#"><img src="{% static 'first_vs/logos/tpg2.png'%}"alt="logo"></a></div>
+            </div>
+            <div class="right">
+                <ul>
+                    <li>
+                        <a href="#"><span class="log"><img src="{% static 'first_vs/logos/home.svg'%}"  alt=""></span>
+                        <span class="text1">Home</span></a></li>
+                    <li>
+                        <a href="#"><span class="log"><img src="{% static 'first_vs/logos/bag.svg'%}" alt=""></span>
+                        <span class="text">Collections</span></a>
+                    </li>
+                    <li>
+                        <a href="#"><span class="log"><img src="{% static 'first_vs/logos/phone.svg'%}" alt=""></span>
+                        <span class="text">Contact us</span></a>
+                    </li>
+                    <li>
+                        <a href="#"><span class="log"><img src="{% static 'first_vs/logos/question.svg'%}" alt=""></span>
+                        <span class="text1">About</span></a>
+                    </li>
+
+                </ul>
+                
+            </div>
+        </div>
+    </header>
+    <main>
+        <div class="main_container">
+            <div class="cards">
+                <form action="/index.php" method="post">
+                    {% csrf_token %}
+                    <p> Firstname: </p><input type="text" name="fname" id="fname" placeholder="Firstname:"> 
+                    <p> Lastname:</p>
+                    <input type="text" name="lname" id="lname" placeholder="Lastname:"> 
+                    <p> PhoneNo:</p>
+                    <input type="text" name="phone" id="phone" placeholder="PhoneNo:"> 
+                    <p> Address:</p>
+                    <textarea name="add" id="add" cols="40" rows="3"></textarea> 
+                    <p> Userid:</p>
+                    <input type="text" name="userid" id="userid" placeholder="Username:"> 
+                    <p>Password:</p>
+                    <input type="password" name="pass" id="pass" placeholder="Password:">
+                    <p>Confirm-Password:</p>
+                    <input type="password" name="cpass" id="cpass" placeholder="Confirm-Password:"> <br>
+                    <div class="buttons">
+                        <button type="submit"><img src="{% static 'first_vs/logos/publish.svg'%}" alt="submit"></button>
+                        <button type="reset">Reset</button>
+                    </div>
+                    <a href="{% url 'login' %}">Already Registered? Login</a>
+                </form>
+            </div>
+            <div class="social_logos"> 
+                <div class="logos"><img src="{% static 'first_vs/logos/facebook.png'%}" alt="facebook"></div>
+                <div class="logos"><img src="{% static 'first_vs/logos/instagram.png'%}" alt="Instagram"></div>
+                <div class="logos"><img src="{% static 'first_vs/logos/twitter.png'%}" alt="Twitter"></div>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <div class="foot_container">
+            <div class="credits">
+                <h2>Credits:</h2>
+                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ducimus alias architecto sequi eius cumque, excepturi esse in officia temporibus, vero eaque, culpa error. Voluptatibus fugiat quos earum nam aliquid sint officia ab placeat adipisci eveniet, aut corporis.
+                    <br> <br> Molestias vel fuga earum voluptatibus. Quidem asperiores corrupti autem aut sit ad vero!</p>
+            </div>
+            <div class="login_sec">
+                <h2>Pages:</h2>
+                <ul>
+                    <li><a href="http://" target="_blank" rel="noopener noreferrer">Admin</a></li>
+                    <li><a href="http://" target="_blank" rel="noopener noreferrer">Employee</a></li>
+                    <li><a href="http://" target="_blank" rel="noopener noreferrer">User</a></li>
+                    <li><a href="http://" target="_blank" rel="noopener noreferrer">Privacy Policy</a></li>
+                    <li><a href="http://" target="_blank" rel="noopener noreferrer">Feedback</a></li>
+                </ul>
+            </div>
+            <div class="foot">
+               <p>Copyright ©️ 2022-2030 | TheProjectGarments | All rights reserved</p> 
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
