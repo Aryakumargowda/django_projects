@@ -35,13 +35,14 @@
 
                 </ul>
                 
-            </div>
+            </div>sett
         </div>
     </header>
     <main>
         <div class="main_container">
             <div class="cards">
-                <form action="/index.php" method="post">
+                <form action="" method="post">
+                    {% csrf_token %}
                     <p> EmployeeID:</p>
                     <input type="text" name="user" id="user" placeholder="EmployeeID:"> 
                     <p>Password:</p>

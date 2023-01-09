@@ -28,6 +28,7 @@ urlpatterns = [
     path('reg/',views.reg,name='register'),
     path('admin1/',views.admin1,name='admin1'),
     path('customer/',views.customers,name='customers'),
+    path('profile/',views.profile,name='profile')
     ]
 
 urlpatterns += staticfiles_urlpatterns()

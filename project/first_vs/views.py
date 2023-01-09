@@ -8,12 +8,12 @@ def home(request):
 def login(request):
     global flag
     if request.method=="POST":
-        username=request.POST['username']
+        username=request.POST['user']
         password=request.POST['password']  
         flag=1
         chk=Registered_user.objects.all()
         for i in chk:
-            if i.username==username and i.password==password:
+            if i.userid==username and i.pwd1==password:
                 flag=1
                 return redirect('succ')
         return redirect('err')
@@ -37,7 +37,7 @@ def reg(request):
                 flag=1
                 return render(request, 'first_vs/register.html',{'err':err})
         if flag==0:
-            register=Registered_user(fname=fname,lname=lname,phone=phone,adder=adder,userid=username,pwd1=password,pwd2=password1)
+            register=Registered_user(fname=fname,lname=lname,phone=phone,adder=adder,userid=username,pwd1=password)
             if password==password1:
                 register.save()
                 return redirect('home')
@@ -46,13 +46,16 @@ def reg(request):
                 return render(request, 'first_vs/register.html',{'err':err})
     return render(request, 'first_vs/register.html',{})
             
+def profile(request):
+    sh=Registered_user.objects.last()
 
+    return render(request,'first_vs/profile.html',{'sh':sh})
 
 # def login(request):
 #     return render(request, 'first_vs/login.html')
 
-def register(request):
-    return render(request, 'first_vs/register.html')
+# def register(request):
+#     return render(request, 'first_vs/register.html')
 
 def admin1(request):
     return render(request, 'first_vs/admin.html')
