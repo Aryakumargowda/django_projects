@@ -1,5 +1,6 @@
+import random
 from django.shortcuts import render,redirect
-from .models import Login,Registered_user
+from .models import Login,Registered_user,Customers
 
 flag=0
 def home(request):
@@ -51,17 +52,40 @@ def profile(request):
 
     return render(request,'first_vs/profile.html',{'sh':sh})
 
-# def login(request):
-#     return render(request, 'first_vs/login.html')
 
-# def register(request):
-#     return render(request, 'first_vs/register.html')
+def addreg(request):
+    if request.method=="POST":
+        name=request.POST['name']
+        phone=request.POST['phone']
+        gst=request.POST['gst']
+        adder=request.POST['add']
+        coname=request.POST['co_name']
+        email=request.POST['email']
+        ordname=request.POST['ord_name']
+        chk=Customers.objects.all()
+        last=Customers.objects.last()
+        for i in chk:
+            j=1
+            if i.email==last.email:
+                cid=j
+                ordnumber=j
+            j+=1
+        # ordnumber=random.sample()
+        add=Customers(c_id=cid,name=name,phone=phone,gst=gst,adder=adder,co_name=coname,email=email,ord_name=ordname,ord_number=ordnumber)
+        add.save()
+        return render(request,'first_vs/addreg.html',{})
+def login(request):
+    return render(request, 'first_vs/login.html')
+
+def register(request):
+    return render(request, 'first_vs/register.html')
 
 def admin1(request):
     return render(request, 'first_vs/admin.html')
 
 def customers(request):
-    return render(request, 'first_vs/cust.html')
+    tab=Customers.objects.all()
+    return render(request, 'first_vs/cust.html',{'tab':tab})
 
 def hello(request):
     return render(request, 'hello.html')

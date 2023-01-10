@@ -48,7 +48,14 @@
                 <div class="content1">
                     <div class="main_content">
                         <h3>Customer list</h3>
-                        <p>
+                        {% for i in tab %}
+                            {{ i.c_id }}
+                            {{ i.name }}
+                            {{ i.co_name }}
+                            {{ i.email }}
+                            {{ i.ord_name }}
+                        {% endfor %}
+                        <!-- <p>
                             Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vitae ducimus inventore commodi
                             aut
                             quod dolore quo molestias impedit ullam ratione. Quam saepe quidem maiores expedita maxime
@@ -57,7 +64,7 @@
                             alias
                             eligendi ipsa est cupiditate maxime mollitia ut molestias corrupti repudiandae inventore
                             officiis quas impedit aliquam illo aut maiores temporibus fugit dignissimos excepturi,
-                            voluptatem veniam delectus. Totam, blanditiis? Quas, fugit cupiditate?</p>
+                            voluptatem veniam delectus. Totam, blanditiis? Quas, fugit cupiditate?</p> -->
                     </div>
                     <div class="control_bar">
                         <div class="list"> <img src="{% static 'first_vs/logos/menu.svg'%}" alt="list" id="list"></div>

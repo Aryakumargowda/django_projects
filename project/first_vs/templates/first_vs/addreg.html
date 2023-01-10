@@ -1,20 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    {% load static%}
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profile</title>
-    {% load static %}
-    <link rel="stylesheet" href="{% static 'first_vs/style.css' %}">
+    <title>Register</title>
+    <link rel="stylesheet" href="{%static 'first_vs/register.css' %}">
 </head>
-<style>
-    h4{
-        color:rgb(0, 0, 0);
-    }
-</style>
 <body>
-    {% load static %}
     <header>
         <div class="head">
             <div class="left">
@@ -44,9 +38,36 @@
         </div>
     </header>
     <main>
-        <h4>
-         Hii {{ sh }}, Welcome to  TheProjectGarments.
-        </h4> 
+        <div class="main_container">
+            <div class="cards">
+                <form action="" method="POST">
+                    {% csrf_token %}
+                    <p> Name: </p><input type="text" name="name" id="name" placeholder="Name:"> 
+                    <p> PhoneNo:</p>
+                    <input type="text" name="phone" id="phone" placeholder="PhoneNo:"> 
+                    <p> GST NO:</p>
+                    <input type="text" name="gst" id="gst" placeholder="GST Number:"> 
+                    <p> Address:</p>
+                    <textarea name="add" id="add" cols="40" rows="3"></textarea> 
+                    <p> Company Name:</p>
+                    <input type="text" name="co_name" id="co_name" placeholder="Company Name:"> 
+                    <p>Email:</p>
+                    <input type="email" name="email" id="email" placeholder="Email:">
+                    <p>Order name:</p>
+                    <input type="text" name="ord_name" id="ord_name" placeholder="Order Name:"> <br>
+                    <div class="buttons">
+                        <button type="submit"><img src="{% static 'first_vs/logos/publish.svg'%}" alt="submit"></button>
+                        <button type="reset">Reset</button>
+                    </div>
+                    <a href="{% url 'login' %}">Already Registered? Login</a>
+                </form>
+            </div>
+            <div class="social_logos"> 
+                <div class="logos"><img src="{% static 'first_vs/logos/facebook.png'%}" alt="facebook"></div>
+                <div class="logos"><img src="{% static 'first_vs/logos/instagram.png'%}" alt="Instagram"></div>
+                <div class="logos"><img src="{% static 'first_vs/logos/twitter.png'%}" alt="Twitter"></div>
+            </div>
+        </div>
     </main>
     <footer>
         <div class="foot_container">
