@@ -28,6 +28,7 @@ urlpatterns = [
     path('reg/',views.reg,name='register'),
     path('admin1/',views.admin1,name='admin1'),
     path('customer/',views.customers,name='customers'),
+    path('succ/',views.succ,name='succ'),
     path('profile/',views.profile,name='profile'),
     path('customers_/',views.customer,name='custom'),
     ]

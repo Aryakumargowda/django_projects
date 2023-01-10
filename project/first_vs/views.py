@@ -1,5 +1,7 @@
+import datetime
 from http.client import HTTPResponse
 import random
+# from django.contrib import messages
 from django.shortcuts import render,redirect
 from .models import Login,Registered_user,Customer
 
@@ -53,7 +55,11 @@ def profile(request):
 
     return render(request,'first_vs/profile.html',{'sh':sh})
 
+# -------------------customer-Register------------------
+
 def customer(request):
+    err=''
+    flag=0
     if request.method=="POST":
         namei=request.POST['name']
         phone=request.POST['phone']
@@ -62,21 +68,29 @@ def customer(request):
         co_name=request.POST['co_name']
         email=request.POST['email']
         ord_name=request.POST['ord_name']
-        reg=Customer(namei=namei,phone=phone,gst=gst,)
-    return render(request, 'first_vs/customer.html')
+        date=datetime.datetime.now()
+        chk=Customer.objects.all()
+        for i in chk:
+            if i.namei==namei:
+                err="Name already exist"
+                flag=1
+        if flag==0:
+            reg=Customer(namei=namei,phone=phone,gst=gst,adder=addr,co_name=co_name,email=email,ord_name=ord_name,date=date)
+            reg.save()
+            return redirect('succ')
+    return render(request, 'first_vs/customer.html',{'err':err})
 
 # def login(request):
 #     return render(request, 'first_vs/login.html')
 
-def register(request):
-    return render(request, 'first_vs/register.html')
+def succ(request):
+    return render(request, 'first_vs/succ.html')
 
 def admin1(request):
     return render(request, 'first_vs/admin.html')
 
 def customers(request):
-    # tab=Customer.objects.all()
-    tab=0
+    tab=Customer.objects.all()
     return render(request, 'first_vs/cust.html',{'tab':tab})
 
 def hello(request):

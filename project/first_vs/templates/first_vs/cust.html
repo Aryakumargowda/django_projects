@@ -48,13 +48,26 @@
                 <div class="content1">
                     <div class="main_content">
                         <h3>Customer list</h3>
-                        {% for i in tab %}
-                            {{ i.c_id }}
-                            {{ i.name }}
-                            {{ i.co_name }}
-                            {{ i.email }}
-                            {{ i.ord_name }}
-                        {% endfor %}
+                        <table>
+                            <tr class="tab_head">
+                                <td>Name</td>
+                                <td>GST</td>
+                                <td>Company Name</td>
+                                <td>Email</td>
+                                <td>Order Name</td>
+                                <td>Ordered date</td>
+                            </tr>
+                            {% for i in tab %}
+                            <tr>
+                                <td> {{ i.namei }}</td>
+                                <td> {{ i.gst }}</td>
+                                <td> {{ i.co_name }}</td>
+                                <td> {{ i.email }}</td>
+                                <td> {{ i.ord_name }}</td>
+                                <td> {{ i.date }}</td>
+                            </tr>
+                            {% endfor %}
+                        </table>
                         <!-- <p>
                             Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vitae ducimus inventore commodi
                             aut

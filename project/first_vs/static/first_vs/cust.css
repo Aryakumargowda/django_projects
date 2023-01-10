@@ -94,6 +94,21 @@ main{
     padding: 5em;
 }
 
+table{
+    /* border:1.5px; */
+}
+
+td{
+    padding: .5em;
+    margin: 0em;
+    text-align: center;
+    border: 1px solid black;
+}
+
+.tab_head{
+    font-weight: 600;
+}
+
 .cards{
     display:flex;
     align-items: center;
@@ -135,7 +150,7 @@ main{
 .content1{
     background: rgba(255, 255, 255, 0.747);
     max-height: 25em;
-    width: 30em;
+    /* width: 40em; */
     border: 1.92px rgb(196, 194, 194) ;
     border-style: ridge;
     padding: 1.5em;
@@ -144,11 +159,18 @@ main{
     align-items: center;
     justify-content: center;
     margin: 1em;
+    overflow: hidden;
+    overflow-y: scroll;
     border-radius: 1.5em;
     color: rgb(75, 61, 75);
     z-index: 2;
     opacity: 1;
 }
+
+::-webkit-scrollbar{
+    width: 0;
+}
+
 
 .content5,.content2,.content3,.content4{
     background: rgba(255, 255, 255, 0.747);

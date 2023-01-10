@@ -17,12 +17,13 @@ class Registered_user(models.Model):
 
 
 class Customer(models.Model):
-    namei=models.CharField(max_length=50)
+    namei=models.CharField(max_length=50,unique=True)
     phone=models.CharField(max_length=40)
-    gst=models.CharField(max_length=50)
+    gst=models.CharField(max_length=50,unique=True)
     adder=models.TextField(max_length=500)
     co_name=models.CharField(max_length=50)
     email=models.CharField(max_length=100)
     ord_name=models.CharField(max_length=50)
+    date=models.DateField()
     def __str__(self):
         return self.namei

@@ -1,4 +1,4 @@
-{% load static%}
+{% load static %}
 
 <form action="" method="POST">
     {% csrf_token %}
@@ -15,6 +15,7 @@
     <input type="email" name="email" id="email" placeholder="Email:">
     <p>Order name:</p>
     <input type="text" name="ord_name" id="ord_name" placeholder="Order Name:"> <br>
+    {{ err }}
     <div class="buttons">
         <button type="submit"><img src="{% static 'first_vs/logos/publish.svg'%}" alt="submit"></button>
         <button type="reset">Reset</button>
