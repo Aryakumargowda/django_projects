@@ -1,7 +1,7 @@
 from http.client import HTTPResponse
 import random
 from django.shortcuts import render,redirect
-from .models import Login,Registered_user
+from .models import Login,Registered_user,Customer
 
 flag=0
 def home(request):
@@ -53,7 +53,17 @@ def profile(request):
 
     return render(request,'first_vs/profile.html',{'sh':sh})
 
-
+def customer(request):
+    if request.method=="POST":
+        namei=request.POST['name']
+        phone=request.POST['phone']
+        gst=request.POST['gst']
+        addr=request.POST['add']
+        co_name=request.POST['co_name']
+        email=request.POST['email']
+        ord_name=request.POST['ord_name']
+        reg=Customer(namei=namei,phone=phone,gst=gst,)
+    return render(request, 'first_vs/customer.html')
 
 # def login(request):
 #     return render(request, 'first_vs/login.html')
