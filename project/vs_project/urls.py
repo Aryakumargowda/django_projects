@@ -29,7 +29,7 @@ urlpatterns = [
     path('admin1/',views.admin1,name='admin1'),
     path('customer/',views.customers,name='customers'),
     path('profile/',views.profile,name='profile'),
-    path('customer_/',views.addreg,name='addreg'),
+    path('customers_/',views.customer,name='custom'),
     ]
 
 urlpatterns += staticfiles_urlpatterns()

@@ -16,14 +16,14 @@ class Registered_user(models.Model):
         return self.userid
 
 
-class Customers(models.Model):
-    c_id=models.IntegerField(unique=True,null=False)
-    name=models.CharField(max_length=50,null=False,)
+class Customer(models.Model):
+    c_id=models.CharField(max_length=20)
+    name=models.CharField(max_length=50)
     phone=models.CharField(max_length=40)
     adder=models.TextField(max_length=500)
-    gst=models.CharField(max_length=16,unique=True)
+    gst=models.CharField(max_length=16)
     co_name=models.CharField(max_length=50)
-    email=models.CharField(max_length=100,unique=True)
+    email=models.CharField(max_length=100)
     ord_name=models.CharField(max_length=60)
     ord_number=models.CharField(max_length=60)
     def __str__(self):
