@@ -9,13 +9,13 @@ def login(request):
     global flag
     if request.method=="POST":
         username=request.POST['user']
-        password=request.POST['password']  
+        password=request.POST['pass']  
         flag=1
         chk=Registered_user.objects.all()
         for i in chk:
             if i.userid==username and i.pwd1==password:
                 flag=1
-                return redirect('succ')
+                return redirect('profile')
         return redirect('err')
     return render(request, 'first_vs/login.html',{'flag':flag})
     
