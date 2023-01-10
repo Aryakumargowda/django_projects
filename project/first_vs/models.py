@@ -14,18 +14,3 @@ class Registered_user(models.Model):
     pwd2=models.CharField(max_length=60)
     def __str__(self):
         return self.userid
-
-
-class Customer(models.Model):
-    c_id=models.CharField(max_length=20)
-    name=models.CharField(max_length=50)
-    phone=models.CharField(max_length=40)
-    adder=models.TextField(max_length=500)
-    gst=models.CharField(max_length=16)
-    co_name=models.CharField(max_length=50)
-    email=models.CharField(max_length=100)
-    ord_name=models.CharField(max_length=60)
-    ord_number=models.CharField(max_length=60)
-    def __str__(self):
-        return self.name
-# Create your models here.
