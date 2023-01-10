@@ -17,7 +17,7 @@ class Registered_user(models.Model):
 
 
 class Customers(models.Model):
-    c_id=models.IntegerField(max_length=30,unique=True,null=False)
+    c_id=models.IntegerField(unique=True,null=False)
     name=models.CharField(max_length=50,null=False,)
     phone=models.CharField(max_length=40)
     adder=models.TextField(max_length=500)
@@ -28,5 +28,4 @@ class Customers(models.Model):
     ord_number=models.CharField(max_length=60)
     def __str__(self):
         return self.name
-
 # Create your models here.

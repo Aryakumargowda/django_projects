@@ -73,7 +73,11 @@ def addreg(request):
         # ordnumber=random.sample()
         add=Customers(c_id=cid,name=name,phone=phone,gst=gst,adder=adder,co_name=coname,email=email,ord_name=ordname,ord_number=ordnumber)
         add.save()
+        # return httpres
         return render(request,'first_vs/addreg.html',{})
+    # else:
+    #     return render(request,'first_vs/addreg.html',{})
+
 def login(request):
     return render(request, 'first_vs/login.html')
 
