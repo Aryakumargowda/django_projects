@@ -24,14 +24,14 @@ class Customer(models.Model):
     co_name=models.CharField(max_length=50,blank=False)
     email=models.CharField(max_length=100,blank=False)
     ord_name=models.CharField(max_length=50,blank=False)
-    # ord_amt=models.CharField(max_length=20)
-    # payed=models.CharField(max_length=20)
+    ord_amt=models.CharField(max_length=20)
+    pending_payment=models.CharField(max_length=20)
     date=models.DateField()
     def __str__(self):
         return self.namei
 
 class Bills(models.Model):
-    co_name=Customer.co_name
+    co_name=models.CharField(max_length=50)
     ord_bill=models.IntegerField()
     tot=models.IntegerField()
     gst=models.CharField(max_length=5)

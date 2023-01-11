@@ -74,8 +74,8 @@ def customer(request):
             co_name=request.POST['co_name']
             email=request.POST['email']
             ord_name=request.POST['ord_name']
-            # ord_amt=request.POST['tot']
-            # payed=bills(ord_amt)
+            ord_amt=int(request.POST['tot'])
+            payed=bills(ord_amt,co_name)
             date=datetime.datetime.now()
             chk=Customer.objects.all()
             for i in chk:
@@ -83,7 +83,7 @@ def customer(request):
                     err="Name already exist"
                     flag=1
             if flag==0:
-                reg=Customer(namei=namei,phone=phone,gst=gst,adder=addr,co_name=co_name,email=email,ord_name=ord_name,date=date)
+                reg=Customer(namei=namei,phone=phone,gst=gst,adder=addr,co_name=co_name,email=email,ord_name=ord_name,ord_amt=ord_amt,pending_payment=payed,date=date)
                 reg.save()
                 return render(request,'first_vs/succ.html',{'usr':usr})
         return render(request, 'first_vs/customer.html',{'err':err,'usr':usr})
@@ -95,15 +95,18 @@ def customer(request):
 
 # --------------------bills-------------------
 
-def bills(ord_bill):
-    global gst
+def bills(ord_bill,coname):
+    gst=18
     clear=0
+    gst_amt=0
+    net_amt=0
+    pbil=0
     # ord_bill=Bills.objects.values('ord_bill')
-    gst_amt=(ord_bill*gst)/100
-    net_amt=ord_bill+gst_amt
-    clear=net_amt-clear
+    gst_amt=int((ord_bill*gst)/100)
+    net_amt=int(ord_bill+gst_amt)
+    clear=int(net_amt-clear)
     pbil=net_amt
-    m=Bills(ord_bill=ord_bill,tot=net_amt,gst=gst_amt,p_bill=pbil,cleared=clear)
+    m=Bills(co_name=coname,ord_bill=ord_bill,tot=net_amt,gst=gst_amt,p_bill=pbil,cleared=clear)
     m.save()
     return clear
 
