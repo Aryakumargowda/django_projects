@@ -31,6 +31,7 @@ urlpatterns = [
     path('succ/',views.succ,name='succ'),
     path('profile/',views.profile,name='profile'),
     path('customers_/',views.customer,name='custom'),
+    path('emp/',views.emp,name='emp'),
     ]
 
 urlpatterns += staticfiles_urlpatterns()

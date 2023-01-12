@@ -39,3 +39,16 @@ class Bills(models.Model):
     cleared=models.IntegerField()
     def __str__(self):
         return self.co_name
+
+
+class Employees(models.Model):
+    Ssn=models.CharField(max_length=20)
+    E_name=models.CharField(max_length=50)
+    Salary=models.IntegerField(0)
+    E_address=models.TextField(max_length=500)
+    E_phone=models.CharField(max_length=13)
+    Gender=models.CharField(max_length=20)
+    Department=models.CharField(max_length=50)
+    Join_date=models.DateField()
+    def __str__(self):
+        return self.E_name

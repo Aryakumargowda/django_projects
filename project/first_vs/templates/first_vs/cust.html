@@ -43,6 +43,7 @@
         </div>
     </header>
     <main>
+        <h2>Customers Data and Lists</h2>
         <div class="cards">
             <div class="contents">
                 <div class="content1">
@@ -56,6 +57,7 @@
                                 <td>Email</td>
                                 <td>Order Name</td>
                                 <td>Ordered date</td>
+                                <td>Total amount</td>
                             </tr>
                             {% for i in tab %}
                             <tr>
@@ -65,6 +67,7 @@
                                 <td> {{ i.email }}</td>
                                 <td> {{ i.ord_name }}</td>
                                 <td> {{ i.date }}</td>
+                                <td> {{ i.pending_payment }}</td>
                             </tr>
                             {% endfor %}
                         </table>

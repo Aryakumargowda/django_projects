@@ -110,6 +110,9 @@ def bills(ord_bill,coname):
     m.save()
     return clear
 
+def emp(request):
+    return render(request,'first_vs/emp.html')
+
 def succ(request):
     return render(request, 'first_vs/succ.html')
 
