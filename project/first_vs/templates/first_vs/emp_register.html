@@ -1,19 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    {% load static%}
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
-    {% load static %}
-    <link rel="stylesheet" href="{% static 'first_vs/style.css' %}">
+    <title>Employee Register</title>
+    <link rel="stylesheet" href="{%static 'first_vs/empregister.css' %}">
 </head>
 <body>
-    {% load static %}
     <header>
         <div class="head">
             <div class="left">
-                <div class="logo"><a href="#"><img src="{% static 'first_vs/logos/tpg2.png'%}"alt="logo"></a></div>
+                <div class="logo"><a href="#"><img src="{% static 'first_vs/logos/tgp_white.png'%}"alt="logo"></a></div>
             </div>
             <div class="right">
                 <ul>
@@ -40,21 +39,35 @@
     </header>
     <main>
         <div class="main_container">
-            <h2> Admin Login </h2>
+            <h2>Employee Registering Form</h2>
             <div class="cards">
-                <form action="" method="post">
+                <form action="" method="POST">
                     {% csrf_token %}
-                    <p> AdminID:</p>
-                    <input type="text" name="user" id="user" placeholder="EmployeeID:"> 
-                    <p>Password:</p>
-                    <input type="password" name="pass" id="pass" placeholder="Password:"> <br>
-                    <button type="submit"><img src="{% static 'first_vs/logos/publish.svg'%}" alt="submit"></button>
+                    <p> Firstname: </p><input type="text" name="fname" id="fname" placeholder="Firstname:"> 
+                    <p> Lastname:</p>
+                    <input type="text" name="lname" id="lname" placeholder="Lastname:"> 
+                    <p> PhoneNo:</p>
+                    <input type="text" name="phone" id="phone" placeholder="PhoneNo:"> 
+                    <p> Salary:</p>
+                    <input type="text" name="salary" id="salary" placeholder="Salary of the Employee:"> 
+                    <p> Gender:</p>
+                    <input type="text" name="gender" id="gender" placeholder="Gender:"> 
+                    <p> Address:</p>
+                    <textarea name="add" id="add" cols="40" rows="3"></textarea> 
+                    <p> Username:</p>
+                    <input type="text" name="userid" id="userid" placeholder="Username:"> 
+                    <p> Working Department:</p>
+                    <input type="text" name="dept" id="dept" placeholder="Department:"> 
+                    <div class="buttons">
+                        <button type="submit"><img src="{% static 'first_vs/logos/publish.svg'%}" alt="submit"></button>
+                        <button type="reset">Reset</button>
+                    </div>
                 </form>
             </div>
             <div class="social_logos"> 
-                <div class="logos"><a href="www.facebook.com"><img src="{% static 'first_vs/logos/facebook.png' %}" alt="facebook"></a></div>
-                    <div class="logos"><img src="{% static 'first_vs/logos/instagram.png'%}" alt="Instagram"></div>
-                    <div class="logos"><img src="{% static 'first_vs/logos/twitter.png'%}" alt="Twitter"></div>
+                <div class="logos"><img src="{% static 'first_vs/logos/facebook.png'%}" alt="facebook"></div>
+                <div class="logos"><img src="{% static 'first_vs/logos/instagram.png'%}" alt="Instagram"></div>
+                <div class="logos"><img src="{% static 'first_vs/logos/twitter.png'%}" alt="Twitter"></div>
             </div>
         </div>
     </main>

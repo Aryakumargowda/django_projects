@@ -26,12 +26,15 @@ urlpatterns = [
     path('hello/', views.hello ,name='hello'),
     path('login/',views.login,name='login'),
     path('reg/',views.reg,name='register'),
+    path('empreg/',views.emp_reg,name='emp_register'),
     path('admin1/',views.admin1,name='admin1'),
     path('customer/',views.customers,name='customers'),
     path('succ/',views.succ,name='succ'),
     path('profile/',views.profile,name='profile'),
     path('customers_/',views.customer,name='custom'),
-    path('emp/',views.emp,name='emp'),
+    path('emp/',views.emp_profile,name='emp_profile'),
+    path('emplogin/',views.emplogin,name='emplogin'),
+    path('err/',views.err,name="err"),
     ]
 
 urlpatterns += staticfiles_urlpatterns()
