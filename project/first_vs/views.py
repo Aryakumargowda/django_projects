@@ -7,23 +7,25 @@ from django.shortcuts import render,redirect
 from .models import Login,Registered_user,Customer,Bills,Employees
 
 flagg=0
-key=Fernet.generate_key()
-fernet=Fernet(key)
+# key=Fernet.generate_key()
+
 usr=''
 gst=18
 def home(request):
     return render(request, 'first_vs/home.html')
-
+# b'gAAAAABjwZ_u2BouONz5kxPBmFSErW7nsQmnWhRPVedVgShtaeo4rIuqlFT8FbNEg1jFd0TMgQfrtKJYiUbVbQz79k924rmJCw=='
 def login(request):
+    # fernet=Fernet(key)
     global flagg,usr
     if request.method=="POST":
         username=request.POST['user']
         password=request.POST['pass']  
-        pwd=fernet.decrypt(password).decode()
+        # pwd=fernet.encrypt(password.encode())
         flag=1
         chk=Registered_user.objects.all()
         for i in chk:
-            if i.userid==username and i.pwd1==pwd:
+            # pwd1=fernet.decrypt(i.pwd1).decode()
+            if i.userid==username and i.pwd1==password:
                 flagg=1
                 usr==username
                 return redirect('profile')
@@ -31,6 +33,7 @@ def login(request):
     return render(request, 'first_vs/login.html')
     
 def reg(request):
+    # fernet=Fernet(key)
     flag=0
     if request.method=="POST":
         fname=request.POST['fname']
@@ -50,8 +53,8 @@ def reg(request):
                 return render(request, 'first_vs/register.html',{'err':err})
         if flag==0:
             if password==password1:
-                pwd=fernet.encrypt(password.encode())
-                pwd1=fernet.encrypt(password1.encode())
+                # pwd=fernet.encrypt(password.encode())
+                # pwd1=fernet.encrypt(password1.encode())
                 register=Registered_user(fname=fname,lname=lname,phone=phone,adder=adder,userid=username,pwd1=pwd)
                 register.save()
                 return redirect('home')
@@ -166,6 +169,10 @@ def emplogin(request):
 def emp_profile():
     get=Employees.objects.all()
     return get
+
+def emp_tab(request):
+    get=Employees.objects.all()
+    return render(request,"first_vs/emp_tables.html",{'get':get})
 
 def succ(request):
     return render(request, 'first_vs/succ.html')

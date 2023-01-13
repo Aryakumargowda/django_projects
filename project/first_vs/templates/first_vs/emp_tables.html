@@ -1,0 +1,30 @@
+from employee tables
+<table>
+    {% load %}
+    <th>
+        <tr>
+            <td>SSN</td>
+            <td>Employee name</td>
+            <td>Username</td>
+            <td>Salary</td>
+            <td>Employee address</td>
+            <td>Employee phone</td>
+            <td>Gender</td>
+            <td>Department</td>
+            <td>Join date</td>
+        </tr>
+    </th>
+    {% for i in get %}
+    <tr>
+        <td>{{i.Ssn}}</td>
+        <td>{{ i.E_name }}</td>
+        <td>{{ i.username }}</td>
+        <td>{{ i.Salary }}</td>
+        <td>{{ i.E_address }}</td>
+        <td>{{ i.E_phone }}</td>
+        <td>{{ i.Gender }}</td>
+        <td>{{ i.Department }}</td>
+        <td>{{ i.Join_date }}</td>
+    </tr>
+    {% endfor %}
+</table>

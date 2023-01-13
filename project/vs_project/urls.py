@@ -35,6 +35,7 @@ urlpatterns = [
     path('emp/',views.emp_profile,name='emp_profile'),
     path('emplogin/',views.emplogin,name='emplogin'),
     path('err/',views.err,name="err"),
+    path('empinf/',views.emp_tab,name="emp_tab"),
     ]
 
 urlpatterns += staticfiles_urlpatterns()
