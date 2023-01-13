@@ -1,4 +1,5 @@
 import datetime
+from cryptography.fernet import Fernet
 from http.client import HTTPResponse
 import random
 # from django.contrib import messages
@@ -6,6 +7,8 @@ from django.shortcuts import render,redirect
 from .models import Login,Registered_user,Customer,Bills,Employees
 
 flagg=0
+key=Fernet.generate_key()
+fernet=Fernet(key)
 usr=''
 gst=18
 def home(request):
@@ -16,10 +19,11 @@ def login(request):
     if request.method=="POST":
         username=request.POST['user']
         password=request.POST['pass']  
+        pwd=fernet.decrypt(password).decode()
         flag=1
         chk=Registered_user.objects.all()
         for i in chk:
-            if i.userid==username and i.pwd1==password:
+            if i.userid==username and i.pwd1==pwd:
                 flagg=1
                 usr==username
                 return redirect('profile')
@@ -36,7 +40,8 @@ def reg(request):
         username=request.POST['userid']
         password=request.POST['pass']
         password1=request.POST['pass1']
-
+        # pwd=fernet.encrypt(password.encode())
+        # pwd1=fernet.encrypt(password1.encode())
         chk=Registered_user.objects.all()
         for i in chk:
             if i.userid==username:
@@ -44,8 +49,10 @@ def reg(request):
                 flag=1
                 return render(request, 'first_vs/register.html',{'err':err})
         if flag==0:
-            register=Registered_user(fname=fname,lname=lname,phone=phone,adder=adder,userid=username,pwd1=password)
             if password==password1:
+                pwd=fernet.encrypt(password.encode())
+                pwd1=fernet.encrypt(password1.encode())
+                register=Registered_user(fname=fname,lname=lname,phone=phone,adder=adder,userid=username,pwd1=pwd)
                 register.save()
                 return redirect('home')
             else:
