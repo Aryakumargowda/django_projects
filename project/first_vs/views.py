@@ -28,7 +28,7 @@ def login(request):
             if i.userid==username and i.pwd1==password:
                 flagg=1
                 usr==username
-                return redirect('profile')
+                return redirect('customers')
         return redirect('err')
     return render(request, 'first_vs/login.html')
     
@@ -55,7 +55,7 @@ def reg(request):
             if password==password1:
                 # pwd=fernet.encrypt(password.encode())
                 # pwd1=fernet.encrypt(password1.encode())
-                register=Registered_user(fname=fname,lname=lname,phone=phone,adder=adder,userid=username,pwd1=pwd)
+                register=Registered_user(fname=fname,lname=lname,phone=phone,adder=adder,userid=username,pwd1=password)
                 register.save()
                 return redirect('home')
             else:
@@ -74,6 +74,7 @@ def customer(request):
         global flagg,usr
     # if flagg==1:
         # login.usr
+
         err=''
         flag=0
         if request.method=="POST":
@@ -85,17 +86,22 @@ def customer(request):
             email=request.POST['email']
             ord_name=request.POST['ord_name']
             ord_amt=int(request.POST['tot'])
-            payed=bills(ord_amt,co_name)
             date=datetime.datetime.now()
             chk=Customer.objects.all()
             for i in chk:
                 if i.namei==namei:
                     err="Name already exist"
                     flag=1
+            id=Customer.objects.count()+1
+            if id>1:
+                last=Customer.objects.last()
+                while int(last.id) >= id:
+                    id+=1
+            payed=bills(ord_amt,co_name,id)
             if flag==0:
-                reg=Customer(namei=namei,phone=phone,gst=gst,adder=addr,co_name=co_name,email=email,ord_name=ord_name,ord_amt=ord_amt,pending_payment=payed,date=date)
+                reg=Customer(id=id,namei=namei,phone=phone,gst=gst,adder=addr,co_name=co_name,email=email,ord_name=ord_name,ord_amt=ord_amt,pending_payment=payed,date=date)
                 reg.save()
-                return render(request,'first_vs/succ.html',{'usr':usr})
+                return redirect('customers')
         return render(request, 'first_vs/customer.html',{'err':err,'usr':usr})
     # else:
     #     return render(request,'first_vs/customer.html')
@@ -105,7 +111,7 @@ def customer(request):
 
 # --------------------bills-------------------
 
-def bills(ord_bill,coname):
+def bills(ord_bill,coname,id):
     gst=18
     clear=0
     gst_amt=0
@@ -114,11 +120,11 @@ def bills(ord_bill,coname):
     # ord_bill=Bills.objects.values('ord_bill')
     gst_amt=int((ord_bill*gst)/100)
     net_amt=int(ord_bill+gst_amt)
-    clear=int(net_amt-clear)
     pbil=net_amt
-    m=Bills(co_name=coname,ord_bill=ord_bill,tot=net_amt,gst=gst_amt,p_bill=pbil,cleared=clear)
+    clear=int(net_amt-pbil)
+    m=Bills(customer_id=id,co_name=coname,ord_bill=ord_bill,tot=net_amt,gst=gst_amt,p_bill=pbil,cleared=clear)
     m.save()
-    return clear
+    return pbil
 
 def emp_reg(request):
     i=0
@@ -174,6 +180,51 @@ def emp_tab(request):
     get=Employees.objects.all()
     return render(request,"first_vs/emp_tables.html",{'get':get})
 
+def customers(request):
+    tab=Customer.objects.all()
+    return render(request, 'first_vs/cust.html',{'tab':tab})
+
+def delete(request,id):
+    if request.method=='POST':
+        pi=Customer.objects.get(pk=id)
+        pi.delete()
+        return redirect('add')
+
+# --------update or edit---------------
+
+def up(request,id):
+    if request.method=="POST":
+        gt=Customer.objects.get(pk=id)
+    else:
+        gt=Customer.objects.get(pk=id)
+        # ob=Registration(request.POST,instance=gt)
+
+    return render(request,'first_vs/update.html',{ 'gt':gt })
+
+def update(request,id):
+    if request.method=="POST":
+        namei=request.POST['name']
+        phone=request.POST['phone']
+        gst=request.POST['gst']
+        co_name=request.POST['co_name']
+        email=request.POST['email']
+        ord_name=request.POST['ord_name']
+        ob=Customer.objects.get(id=id)
+        ob.namei = namei
+        ob.email=email
+        ob.phone=phone
+        ob.gst=gst
+        ob.co_name=co_name
+        ob.ord_name=ord_name
+        ob.save()
+        return redirect('customers')
+
+def delete(request,id):
+    if request.method=='POST':
+        pi=Customer.objects.get(pk=id)
+        pi.delete()
+        return redirect('customers')
+
 def succ(request):
     return render(request, 'first_vs/succ.html')
 
@@ -183,9 +234,7 @@ def err(request):
 def admin1(request):
     return render(request, 'first_vs/admin.html')
 
-def customers(request):
-    tab=Customer.objects.all()
-    return render(request, 'first_vs/cust.html',{'tab':tab})
+
 
 def hello(request):
     return render(request, 'hello.html')

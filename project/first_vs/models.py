@@ -17,6 +17,7 @@ class Registered_user(models.Model):
 
 
 class Customer(models.Model):
+    id=models.CharField(max_length=50,primary_key=True)
     namei=models.CharField(max_length=50,unique=True,blank=False)
     phone=models.CharField(max_length=40,blank=False)
     gst=models.CharField(max_length=50,unique=True)
@@ -31,6 +32,7 @@ class Customer(models.Model):
         return self.namei
 
 class Bills(models.Model):
+    customer_id=models.CharField(max_length=50,default=0)
     co_name=models.CharField(max_length=50)
     ord_bill=models.IntegerField()
     tot=models.IntegerField()

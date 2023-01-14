@@ -36,6 +36,9 @@ urlpatterns = [
     path('emplogin/',views.emplogin,name='emplogin'),
     path('err/',views.err,name="err"),
     path('empinf/',views.emp_tab,name="emp_tab"),
+    path('delete/<int:id>',views.delete,name='delete'),
+    path('upd/<int:id>',views.up,name='update'),
+    path('upd/update/<int:id>',views.update,name='updater'),
     ]
 
 urlpatterns += staticfiles_urlpatterns()

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Update</title>
+    <link rel="stylesheet" href="{%static 'first_vs/register.css' %}">
+</head>
+<body>
+    <main>
+        <div class="main_container">
+            <h2>Customer Registration</h2>
+            <div class="cards">
+                <form action="update/{{gt.id}}" method="POST">
+                    {% csrf_token %}
+                    <p> Name: </p><input type="text" name="name" id="name" placeholder="Name:" value="{{gt.namei}}">
+                    <p> PhoneNo:</p>
+                    <input type="text" name="phone" id="phone" placeholder="PhoneNo:" value="{{gt.phone}}">
+                    <p> GST NO:</p>
+                    <input type="text" name="gst" id="gst" placeholder="GST Number:" value="{{gt.gst}}">
+                    <p> Company Name:</p>
+                    <input type="text" name="co_name" id="co_name" placeholder="Company Name:" value="{{gt.co_name}}">
+                    <p>Email:</p>
+                    <input type="email" name="email" id="email" placeholder="Email:" value="{{gt.email}}">
+                    <p>Order name:</p>
+                    <input type="text" name="ord_name" id="ord_name" placeholder="Order Name:" value="{{gt.ord_name}}"> <br>
+                    <p>Total amount:</p>
+                    <input type="text" name="tot" id="tot" placeholder="Total Amount:" value="{{gt.pending_payment}}"> <br>
+                    <div class="buttons">
+                        <button type="submit"><img src="{% static 'first_vs/logos/publish.svg'%}" alt="submit"></button>
+                        <button type="reset">Reset</button>
+                    </div>
+                    <a href="{% url 'login' %}">Already Registered? Login</a>
+                </form>
+            </div>
+            <div class="social_logos">
+                <div class="logos"><img src="{% static 'first_vs/logos/facebook.png'%}" alt="facebook"></div>
+                <div class="logos"><img src="{% static 'first_vs/logos/instagram.png'%}" alt="Instagram"></div>
+                <div class="logos"><img src="{% static 'first_vs/logos/twitter.png'%}" alt="Twitter"></div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

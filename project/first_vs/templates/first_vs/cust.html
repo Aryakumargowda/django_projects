@@ -9,7 +9,16 @@
     <title>Customers</title>
     <link rel="stylesheet" href="{% static 'first_vs/cust.css'%}">
 </head>
+<style>
+    .but{
+        display: flex;
+        border: 2px solid red;
+    }
 
+    .but button,.but input{
+        margin: .5em;
+    }
+</style>
 <body>
     <header>
         {% load static %}
@@ -25,8 +34,8 @@
                         <a href="{% url 'hello' %}" rel="noopener noreferrer"><span class="text1">Profile</span></a>
                     </li>
                     <li>
-                        <a href="">
-                            <span class="text">Customers</span></a>
+                        <a href="{% url 'custom' %}">
+                            <span class="text">Customers+</span></a>
                     </li>
                     <li>
                         <a href="">
@@ -58,6 +67,7 @@
                                 <td>Order Name</td>
                                 <td>Ordered date</td>
                                 <td>Total amount</td>
+                                <td>Action</td>
                             </tr>
                             {% for i in tab %}
                             <tr>
@@ -68,6 +78,11 @@
                                 <td> {{ i.ord_name }}</td>
                                 <td> {{ i.date }}</td>
                                 <td> {{ i.pending_payment }}</td>
+                                <td class="but"><a href="{% url 'update' i.id %}"><button>Edit</button></a>
+                                    <form action="{% url 'delete' i.id %}" method="post">
+                                        {% csrf_token %}
+                                        <input type="submit" name="delete" id="delete" value="Delete"></form>
+                                </td>
                             </tr>
                             {% endfor %}
                         </table>
