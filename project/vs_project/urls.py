@@ -39,6 +39,11 @@ urlpatterns = [
     path('delete/<int:id>',views.delete,name='delete'),
     path('upd/<int:id>',views.up,name='update'),
     path('upd/update/<int:id>',views.update,name='updater'),
+    path('chpass/',views.ch_pass,name='changepassword'),
+    path('delete/<int:id>',views.e_delete,name='edelete'),
+    path('eupd/<int:id>',views.e_up,name='eupdate'),
+    path('eupd/eupdate/<int:id>',views.e_update,name='eupdater'),
+    path('chpass/',views.ch_pass,name='changepassword'),
     ]
 
 urlpatterns += staticfiles_urlpatterns()

@@ -1,3 +1,18 @@
+<style>
+    td{
+        padding: .51em;
+        border: 2px solid black;
+        margin: 0;
+    }
+    .but{
+        display: flex;
+        border: 2px solid red;
+    }
+
+    .but button,.but input{
+        margin: .5em;
+    }
+</style>
 from employee tables
 <table>
     {% load %}
@@ -12,6 +27,7 @@ from employee tables
             <td>Gender</td>
             <td>Department</td>
             <td>Join date</td>
+            <td>action</td>
         </tr>
     </th>
     {% for i in get %}
@@ -25,6 +41,11 @@ from employee tables
         <td>{{ i.Gender }}</td>
         <td>{{ i.Department }}</td>
         <td>{{ i.Join_date }}</td>
+        <td class="but"><a href="{% url 'eupdate' i.id %}"><button>Edit</button></a>
+            <form action="{% url 'edelete' i.id %}" method="post">
+                {% csrf_token %}
+                <input type="submit" name="delete" id="delete" value="Delete"></form>
+        </td>
     </tr>
     {% endfor %}
 </table>

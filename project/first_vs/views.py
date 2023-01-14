@@ -13,7 +13,6 @@ usr=''
 gst=18
 def home(request):
     return render(request, 'first_vs/home.html')
-# b'gAAAAABjwZ_u2BouONz5kxPBmFSErW7nsQmnWhRPVedVgShtaeo4rIuqlFT8FbNEg1jFd0TMgQfrtKJYiUbVbQz79k924rmJCw=='
 def login(request):
     # fernet=Fernet(key)
     global flagg,usr
@@ -182,7 +181,8 @@ def emp_tab(request):
 
 def customers(request):
     tab=Customer.objects.all()
-    return render(request, 'first_vs/cust.html',{'tab':tab})
+    bil=Bills.objects.all()
+    return render(request, 'first_vs/cust.html',{'tab':tab,'bil':bil})
 
 def delete(request,id):
     if request.method=='POST':
@@ -224,6 +224,64 @@ def delete(request,id):
         pi=Customer.objects.get(pk=id)
         pi.delete()
         return redirect('customers')
+
+# ----------------------employee update-----------------------------
+
+def e_up(request,id):
+    if request.method=="POST":
+        gt=Employees.objects.get(pk=id)
+    else:
+        gt=Employees.objects.get(pk=id)
+        # ob=Registration(request.POST,instance=gt)
+
+    return render(request,'first_vs/emp_update.html',{ 'gt':gt })
+
+def e_update(request,id):
+    if request.method=="POST":
+        name=request.POST['name']
+        username=request.POST['username']
+        phone=request.POST['phone']
+        salary=request.POST['salary']
+        address=request.POST['address']
+        gender=request.POST['gender']
+        department=request.POST['Department']
+        ob=Employees.objects.get(id=id)
+        ob.E_name = name
+        ob.username=username
+        ob.E_address=address
+        ob.E_phone=phone
+        ob.Salary=salary
+        ob.Gender=gender
+        ob.Department=department
+        ob.save()
+        return redirect('emp_tab')
+
+def e_delete(request,id):
+    if request.method=='POST':
+        pi=Employees.objects.get(pk=id)
+        pi.delete()
+        return redirect('emp_tab')
+
+# -------------------------------change emmp-password-----------------------------
+
+def ch_pass(request):
+    err=''
+    if request.method=="POST":
+        eid=request.POST["user"]
+        pwd=request.POST["pass"]
+        pwd1=request.POST["pass1"]
+        chk=Employees.objects.all()
+        for i in chk:
+            if i.username==eid:
+                ob=Employees.objects.get(username=eid)
+                if ob.password=='0' and pwd==pwd1:
+                    ob.password=pwd
+                    ob.save()
+                    return redirect('emplogin')
+              
+        err='Password may be repeated wrong or userid may be incorrect'
+        # return redirect('err')
+    return render(request,'first_vs/emp_passchange.html',{'err':err})
 
 def succ(request):
     return render(request, 'first_vs/succ.html')

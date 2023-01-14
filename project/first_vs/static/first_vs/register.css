@@ -57,7 +57,7 @@ a{
 
 .right ul li{
     position: relative;
-    width: 3em;
+    width: 3.5em;
     height: 2em;
     display: flex;
     justify-content: center;
@@ -108,7 +108,7 @@ span{
 .right ul li:hover .text{
     transform: scale(1);
     transition-delay: .2s;
-    left:1.5em;
+    left:1em;
     opacity: 1;
 }
 

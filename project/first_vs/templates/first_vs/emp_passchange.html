@@ -4,10 +4,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>Password Change</title>
     {% load static %}
     <link rel="stylesheet" href="{% static 'first_vs/empregister.css' %}">
 </head>
+<style>
+
+</style>
 <body>
     {% load static %}
     <header>
@@ -40,17 +43,20 @@
     </header>
     <main>
         <div class="main_container">
-            <h2> Employee Login </h2>
+            <h2> Change your password</h2>
             <div class="cards">
-                <a href="{% url 'changepassword' %}"> {{ err }} </a>
                 <form action="" method="post">
                     {% csrf_token %}
                     <p> EmployeeID:</p>
                     <input type="text" name="user" id="user" placeholder="EmployeeID:"> 
                     <p>Password:</p>
                     <input type="password" name="pass" id="pass" placeholder="Password:"> <br>
-                    <p>Change the password before loging in for the first time</p>
-                    <button type="submit"><img src="{% static 'first_vs/logos/publish.svg'%}" alt="submit"></button>
+                    <p>confirm Password:</p>
+                    <input type="password" name="pass1" id="pass1" placeholder="Confirm Password:"> <br>
+                    <button type="submit" class="sub">
+                        <img src="{% static 'first_vs/logos/publish.svg'%}" alt="submit">
+                    </button>
+                    {{ err }}
                 </form>
             </div>
             <div class="social_logos"> 

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Update</title>
+    <link rel="stylesheet" href="{%static 'first_vs/empregister.css' %}">
+</head>
+
+<body>
+    <main>
+        <div class="main_container">
+            <h2>Employee update</h2>
+            <div class="cards">
+                <form action="eupdate/{{gt.id}}" method="POST">
+                    {% csrf_token %}
+                    <p> Name: </p><input type="text" name="name" id="name" placeholder="Name:" value="{{gt.E_name}}">
+                    <p> Username:</p>
+                    <input type="text" name="username" id="username" placeholder="Username:" value="{{gt.username}}">
+                    <p> PhoneNo:</p>
+                    <input type="text" name="phone" id="phone" placeholder="PhoneNo:" value="{{gt.E_phone}}">
+                    <p> Salary:</p>
+                    <input type="text" name="salary" id="salary" placeholder="Salary:" value="{{gt.Salary}}">
+                    <p>address:</p>
+                    <input type="address" name="address" id="address" placeholder="Address:" value="{{gt.E_address}}">
+                    <p>gender:</p>
+                    <input type="gender" name="gender" id="gender" placeholder="Gender:" value="{{gt.Gender}}">
+                    <p>Department:</p>
+                    <input type="text" name="Department" id="Department" placeholder="Department:" value="{{gt.Department}}"> <br>
+                    <!-- <p>Total amount:</p>
+                    <input type="text" name="tot" id="tot" placeholder="Total Amount:"> <br> -->
+                    <div class="buttons">
+                        <button type="submit"><img src="{% static 'first_vs/logos/publish.svg'%}" alt="submit"></button>
+                        <button type="reset">Reset</button>
+                    </div>
+                </form>
+            </div>
+            <div class="social_logos">
+                <div class="logos"><img src="{% static 'first_vs/logos/facebook.png'%}" alt="facebook"></div>
+                <div class="logos"><img src="{% static 'first_vs/logos/instagram.png'%}" alt="Instagram"></div>
+                <div class="logos"><img src="{% static 'first_vs/logos/twitter.png'%}" alt="Twitter"></div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

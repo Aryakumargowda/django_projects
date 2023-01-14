@@ -10,13 +10,31 @@
     <link rel="stylesheet" href="{% static 'first_vs/cust.css'%}">
 </head>
 <style>
-    .but{
-        display: flex;
-        border: 2px solid red;
-    }
 
-    .but button,.but input{
-        margin: .5em;
+    .but button{
+        padding: .5em;
+        border: none;
+        border-radius: .3em;
+        color:rgb(52, 43, 43);
+        background: rgb(229, 231, 88);
+        box-shadow: 4px 4px 8px rgb(152, 154, 60);
+        cursor: pointer;
+    }
+    td input{
+        padding: .5em;
+        border: none;
+        border-radius: .3em;
+        color:antiquewhite;
+        background: rgb(231, 88, 88);
+        box-shadow: 4px 4px 8px rgb(122, 48, 48);
+        cursor: pointer;
+    }
+    tr:hover{
+        background: rgb(224, 224, 224);
+    }
+    .rd{
+        background: rgb(207, 104, 104);
+        color: antiquewhite;
     }
 </style>
 <body>
@@ -67,7 +85,7 @@
                                 <td>Order Name</td>
                                 <td>Ordered date</td>
                                 <td>Total amount</td>
-                                <td>Action</td>
+                                <td colspan="2">Action</td>
                             </tr>
                             {% for i in tab %}
                             <tr>
@@ -78,24 +96,14 @@
                                 <td> {{ i.ord_name }}</td>
                                 <td> {{ i.date }}</td>
                                 <td> {{ i.pending_payment }}</td>
-                                <td class="but"><a href="{% url 'update' i.id %}"><button>Edit</button></a>
-                                    <form action="{% url 'delete' i.id %}" method="post">
+                                <td class="but"><a href="{% url 'update' i.id %}"><button>Edit</button></a></td>
+                                 <td><form action="{% url 'delete' i.id %}" method="post">
                                         {% csrf_token %}
                                         <input type="submit" name="delete" id="delete" value="Delete"></form>
                                 </td>
                             </tr>
                             {% endfor %}
                         </table>
-                        <!-- <p>
-                            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vitae ducimus inventore commodi
-                            aut
-                            quod dolore quo molestias impedit ullam ratione. Quam saepe quidem maiores expedita maxime
-                            unde
-                            dicta soluta excepturi at ipsam repellendus, quia obcaecati corporis itaque. Nisi soluta
-                            alias
-                            eligendi ipsa est cupiditate maxime mollitia ut molestias corrupti repudiandae inventore
-                            officiis quas impedit aliquam illo aut maiores temporibus fugit dignissimos excepturi,
-                            voluptatem veniam delectus. Totam, blanditiis? Quas, fugit cupiditate?</p> -->
                     </div>
                     <div class="control_bar">
                         <div class="list"> <img src="{% static 'first_vs/logos/menu.svg'%}" alt="list" id="list"></div>
@@ -112,17 +120,25 @@
                 <div class="content2">
 
                     <div class="main_content1">
-                        <h3>Customer list</h3>
-                        <p>
-                            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vitae ducimus inventore commodi
-                            aut
-                            quod dolore quo molestias impedit ullam ratione. Quam saepe quidem maiores expedita maxime
-                            unde
-                            dicta soluta excepturi at ipsam repellendus, quia obcaecati corporis itaque. Nisi soluta
-                            alias
-                            eligendi ipsa est cupiditate maxime mollitia ut molestias corrupti repudiandae inventore
-                            officiis quas impedit aliquam illo aut maiores temporibus fugit dignissimos excepturi,
-                            voluptatem veniam delectus. Totam, blanditiis? Quas, fugit cupiditate?</p>
+                        <h3>Materials</h3>
+                        <table>
+                            <tr class="tab_head">
+                                <td>Name</td>
+                                <td>Company Name</td>
+                                <td>Order Name</td>
+                                <td>Ordered date</td>
+                                <td>Total amount</td>
+                            </tr>
+                            {% for i in tab %}
+                            <tr>
+                                <td> {{ i.namei }}</td>
+                                <td> {{ i.co_name }}</td>
+                                <td> {{ i.ord_name }}</td>
+                                <td> {{ i.date }}</td>
+                                <td> {{ i.pending_payment }}</td>
+                            </tr>
+                            {% endfor %}
+                        </table>
                     </div>
                     <div class="control_bar">
                         <div class="list1"> <img src="{% static 'first_vs/logos/menu.svg'%}" alt="list" id="list"></div>
@@ -139,17 +155,25 @@
                 <div class="content3">
 
                     <div class="main_content2">
-                        <h3>Customer list</h3>
-                        <p>
-                            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vitae ducimus inventore commodi
-                            aut
-                            quod dolore quo molestias impedit ullam ratione. Quam saepe quidem maiores expedita maxime
-                            unde
-                            dicta soluta excepturi at ipsam repellendus, quia obcaecati corporis itaque. Nisi soluta
-                            alias
-                            eligendi ipsa est cupiditate maxime mollitia ut molestias corrupti repudiandae inventore
-                            officiis quas impedit aliquam illo aut maiores temporibus fugit dignissimos excepturi,
-                            voluptatem veniam delectus. Totam, blanditiis? Quas, fugit cupiditate?</p>
+                        <h3>Orders</h3>
+                        <table>
+                            <tr class="tab_head">
+                                <td>Name</td>
+                                <td>Company Name</td>
+                                <td>Order Name</td>
+                                <td>Ordered date</td>
+                                <td>Total amount</td>
+                            </tr>
+                            {% for i in tab %}
+                            <tr>
+                                <td> {{ i.namei }}</td>
+                                <td> {{ i.co_name }}</td>
+                                <td> {{ i.ord_name }}</td>
+                                <td> {{ i.date }}</td>
+                                <td> {{ i.pending_payment }}</td>
+                            </tr>
+                            {% endfor %}
+                        </table>
                     </div>
                     <div class="control_bar">
                         <div class="list2"> <img src="{% static 'first_vs/logos/menu.svg'%}" alt="list" id="list"></div>
@@ -166,17 +190,27 @@
                 <div class="content4">
 
                     <div class="main_content3">
-                        <h3>Customer list</h3>
-                        <p>
-                            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vitae ducimus inventore commodi
-                            aut
-                            quod dolore quo molestias impedit ullam ratione. Quam saepe quidem maiores expedita maxime
-                            unde
-                            dicta soluta excepturi at ipsam repellendus, quia obcaecati corporis itaque. Nisi soluta
-                            alias
-                            eligendi ipsa est cupiditate maxime mollitia ut molestias corrupti repudiandae inventore
-                            officiis quas impedit aliquam illo aut maiores temporibus fugit dignissimos excepturi,
-                            voluptatem veniam delectus. Totam, blanditiis? Quas, fugit cupiditate?</p>
+                        <h3>Bills/Order value</h3>
+                        <table>
+                            <tr class="tab_head">
+                                <td>Customer id</td>
+                                <td>Order Name</td>
+                                <td>Ordered Bill</td>
+                                <td>GST</td>
+                                <td>Total amount</td>
+                                <td>Pending payment</td>
+                            </tr>
+                            {% for i in bil %}
+                            <tr>
+                                <td> {{ i.customer_id }}</td>
+                                <td> {{ i.co_name }}</td>
+                                <td> {{ i.ord_bill }}</td>
+                                <td> {{ i.gst}}</td>
+                                <td> {{ i.tot }}</td>
+                                <td class="rd">{{ i.p_bill }}</td>
+                            </tr>
+                            {% endfor %}
+                        </table>
                     </div>
                     <div class="control_bar">
                         <div class="list3"> <img src="{% static 'first_vs/logos/menu.svg'%}" alt="list" id="list"></div>
