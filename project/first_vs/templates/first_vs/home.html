@@ -6,7 +6,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
-    <link rel="stylesheet" href="{%static 'first_vs/register.css' %}">
+    <link rel="stylesheet" href="{%static 'first_vs/home.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&family=Raleway&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
@@ -21,7 +24,7 @@
                             <span class="text1">Home</span></a>
                     </li>
                     <li>
-                        <a href="#"><span class="log"><img src="{% static 'first_vs/logos/bag.svg'%}" alt=""></span>
+                        <a href="#"><span class="log"><img src="{% static 'first_vs/logos/department.png'%}" alt=""></span>
                             <span class="text">Departments</span></a>
                     </li>
                     <li>
@@ -39,5 +42,52 @@
             </div>
         </div>
     </header>
+    <main>
+        <img src="{% static 'first_vs/logos/blue_store.jpg'%}" alt="" class="back">
+        <div class="heading">
+
+            <p class="main_text">
+                The Best Designs <br> you could get
+            </p>
+            <p class="sub_text">
+                Directly from the most experinced Tailors and Designers, <br> With the highest quality Fabric Available</p>
+                <p class="cont"> JUST CONTACT US <a href="mailto:aryakumargowda2002@gmail.com">
+                    HERE
+                </a>
+            </p>
+        </div>
+        <div class="social_logos"> 
+            <div class="logos"><img src="{% static 'first_vs/logos/facebook.png'%}" alt="facebook"></div>
+            <div class="logos"><img src="{% static 'first_vs/logos/instagram.png'%}" alt="Instagram"></div>
+            <div class="logos"><img src="{% static 'first_vs/logos/twitter.png'%}" alt="Twitter"></div>
+        </div>
+
+
+    </main>
+    <footer>
+        <div class="foot_container">
+            <div class="credits">
+                <h2>Credits:</h2>
+                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ducimus alias architecto sequi eius cumque,
+                    excepturi esse in officia temporibus, vero eaque, culpa error. Voluptatibus fugiat quos earum nam
+                    aliquid sint officia ab placeat adipisci eveniet, aut corporis.
+                    <br> <br> Molestias vel fuga earum voluptatibus. Quidem asperiores corrupti autem aut sit ad vero!
+                </p>
+            </div>
+            <div class="login_sec">
+                <h2>Pages:</h2>
+                <ul>
+                    <li><a href="{% url 'login' %}" target="_blank" rel="noopener noreferrer">Admin Login</a></li>
+                    <li><a href="{% url 'emplogin' %}" target="_blank" rel="noopener noreferrer">Employee Login</a></li>
+                    <li><a href="http://" target="_blank" rel="noopener noreferrer">User</a></li>
+                    <li><a href="http://" target="_blank" rel="noopener noreferrer">Privacy Policy</a></li>
+                    <li><a href="http://" target="_blank" rel="noopener noreferrer">Feedback</a></li>
+                </ul>
+            </div>
+            <div class="foot">
+                <p>Copyright ©️ 2022-2030 | TheProjectGarments | All rights reserved</p>
+            </div>
+        </div>
+    </footer>
 </body>
 </html>

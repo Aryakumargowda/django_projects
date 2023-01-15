@@ -88,15 +88,15 @@ def customer(request):
             date=datetime.datetime.now()
             chk=Customer.objects.all()
             for i in chk:
-                if i.namei==namei:
-                    err="Name already exist"
+                if i.namei==namei and i.co_name==co_name:
+                    err="Name already exist or company name already exist"
                     flag=1
             id=Customer.objects.count()+1
             if id>1:
                 last=Customer.objects.last()
                 while int(last.id) >= id:
                     id+=1
-            payed=bills(ord_amt,co_name,id)
+            payed=bills(ord_amt,co_name,id,ord_name)
             if flag==0:
                 reg=Customer(id=id,namei=namei,phone=phone,gst=gst,adder=addr,co_name=co_name,email=email,ord_name=ord_name,ord_amt=ord_amt,pending_payment=payed,date=date)
                 reg.save()
@@ -110,7 +110,7 @@ def customer(request):
 
 # --------------------bills-------------------
 
-def bills(ord_bill,coname,id):
+def bills(ord_bill,coname,id,ordname):
     gst=18
     clear=0
     gst_amt=0
@@ -121,7 +121,7 @@ def bills(ord_bill,coname,id):
     net_amt=int(ord_bill+gst_amt)
     pbil=net_amt
     clear=int(net_amt-pbil)
-    m=Bills(customer_id=id,co_name=coname,ord_bill=ord_bill,tot=net_amt,gst=gst_amt,p_bill=pbil,cleared=clear)
+    m=Bills(customer_id=id,co_name=coname,ord_bill=ord_bill,ord_name=ordname,tot=net_amt,gst=gst_amt,p_bill=pbil,cleared=clear)
     m.save()
     return pbil
 
@@ -129,11 +129,16 @@ def emp_reg(request):
     i=0
     flag=0
     if request.method=="POST":
-        i=int(Employees.objects.count())
-        ssn=i+1
+        # j=int(Employees.objects.count())
+        id=Employees.objects.count()+1
+        if id>1:
+            last=Employees.objects.last()
+            while int(last.Ssn) >= id:
+                id+=1
+        ssn=id
         fname=request.POST['fname']
         lname=request.POST['lname']
-        name=fname+lname
+        name=fname+" "+lname
         phone=request.POST['phone']
         salary=request.POST['salary']
         adder=request.POST['add']
@@ -150,6 +155,7 @@ def emp_reg(request):
         if flag==0:
             register=Employees(Ssn=ssn,E_name=name,username=username,Salary=salary,E_address=adder,E_phone=phone,Gender=gender,Department=dept,Join_date=date)
             register.save()
+            return redirect('emp_tab')
     return render(request,'first_vs/emp_register.html')
 
 def emplogin(request):

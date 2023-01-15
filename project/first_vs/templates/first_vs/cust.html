@@ -56,7 +56,7 @@
                             <span class="text">Customers+</span></a>
                     </li>
                     <li>
-                        <a href="">
+                        <a href="{% url 'emp_tab' %}">
                             <span class="text">Employees</span></a>
                     </li>
                     <li>
@@ -196,6 +196,7 @@
                                 <td>Customer id</td>
                                 <td>Order Name</td>
                                 <td>Ordered Bill</td>
+                                <td>Ordered Name</td>
                                 <td>GST</td>
                                 <td>Total amount</td>
                                 <td>Pending payment</td>
@@ -205,6 +206,7 @@
                                 <td> {{ i.customer_id }}</td>
                                 <td> {{ i.co_name }}</td>
                                 <td> {{ i.ord_bill }}</td>
+                                <td> {{ i.ord_name }}</td>
                                 <td> {{ i.gst}}</td>
                                 <td> {{ i.tot }}</td>
                                 <td class="rd">{{ i.p_bill }}</td>

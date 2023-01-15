@@ -24,7 +24,7 @@ class Customer(models.Model):
     adder=models.TextField(max_length=500)
     co_name=models.CharField(max_length=50,blank=False)
     email=models.CharField(max_length=100,blank=False)
-    ord_name=models.CharField(max_length=50,blank=False)
+    ord_name=models.CharField(max_length=50,unique=True)
     ord_amt=models.CharField(max_length=20)
     pending_payment=models.CharField(max_length=20)
     date=models.DateField()
@@ -35,6 +35,7 @@ class Bills(models.Model):
     customer_id=models.CharField(max_length=50,default=0)
     co_name=models.CharField(max_length=50)
     ord_bill=models.IntegerField()
+    ord_name=models.CharField(max_length=50,primary_key=True, default='0')
     tot=models.IntegerField()
     gst=models.CharField(max_length=5)
     p_bill=models.IntegerField()
@@ -44,10 +45,10 @@ class Bills(models.Model):
 
 
 class Employees(models.Model):
-    Ssn=models.CharField(max_length=20)
+    Ssn=models.IntegerField(default=0,primary_key=True)
     E_name=models.CharField(max_length=50)
     username=models.CharField(max_length=50,default="default")
-    Salary=models.IntegerField(0)
+    Salary=models.IntegerField()
     E_address=models.TextField(max_length=500)
     E_phone=models.CharField(max_length=13)
     Gender=models.CharField(max_length=20)

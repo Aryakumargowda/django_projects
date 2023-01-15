@@ -94,8 +94,10 @@ main{
     padding: 5em;
 }
 
-table{
-    /* border:1.5px; */
+main h2{
+    text-align: center;
+    color:rgb(200, 186, 200);
+    cursor:default;
 }
 
 td{
@@ -116,11 +118,16 @@ td{
     padding: 2em;
 }
 
+h3{
+    padding-bottom: .8em;
+    cursor:default;
+}
+
 .control_bar{
     display: flex;
     align-items: center;
     color: white;
-    margin: 2em;
+    margin-top: 2em;
 }
 
 .control_bar img{
@@ -145,6 +152,7 @@ td{
     display: flex;
     flex-direction: column;
     justify-content: center;
+    text-align: center;
 }
 
 .content1{
@@ -175,11 +183,12 @@ td{
 .content5,.content2,.content3,.content4{
     background: rgba(255, 255, 255, 0.747);
     height: 0em; 
-    /* width: 0em; */
+    /* min-width: 0em; */
     border: 1.92px rgb(196, 194, 194) ;
     border-style: ridge;
     font-size: .2em;
     margin: 1em;
+    overflow-y: scroll;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -210,7 +219,7 @@ td{
     font-size: 1em;
     transform: scale(1);
     height: 20em;
-    width: 30em;
+    min-width: 30em;
     opacity: 1
 }
 

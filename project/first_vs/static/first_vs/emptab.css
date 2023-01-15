@@ -1,0 +1,140 @@
+*{
+    padding: 0;
+    margin: 0;
+    font-family: 'poppins',sans-serif;
+}
+/* --------------------------header------------------------ */
+header{
+    width: auto;
+    min-height: 5em;
+    background: linear-gradient(to right, rgb(77, 76, 76),rgb(29, 28, 29));
+    padding-left: 1em;
+    padding-right: 1em;
+    z-index: 2;
+}
+
+.head{
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+}
+
+.logo img{
+    width: 3.5em;
+    height: 3.5em;
+    transition: .3s;
+}
+
+.logo img:hover{
+    width: 3.7em;
+    height: 3.7em;
+    box-shadow: 10px 0px 15px rgb(80, 69, 69);
+    border-radius: 1em;
+
+}
+
+.left{
+    padding: .4em;
+}
+
+.right ul{
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-right: 1.5em;
+    padding-top: .5em;
+}
+
+
+
+.right ul img{
+    width: 1.3em;
+    height: 1.3em;
+}
+
+a{
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+}
+
+.right ul li{
+    position: relative;
+    width: 6em;
+    height: 2em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: .31em;
+    margin: .51em;
+    border-radius: .2em;
+    transition: .5s;
+}
+
+.right ul li:hover {
+    background: rgb(255, 255, 255);
+    width: 7em;
+    color: rgb(0, 0, 0);
+    
+}
+
+.text,.text1{
+
+    transition: .3s;
+}
+
+.right ul li:hover .text,.right ul li:hover .text1{
+    color: rgb(0, 0, 0);
+    text-shadow: 2px 2px 5px rgb(89, 93, 95),
+    -2px -2px 5px rgb(74, 77, 78);
+}
+
+/* -----------------main------------------------ */
+
+main{
+    background: linear-gradient(to right, rgb(77, 76, 76),rgb(29, 28, 29));
+    padding: 5em;
+    min-height:80vh;
+}
+
+main p{
+    text-align: center;
+    font-size: 2em;
+    color: white;
+    margin-bottom: 1em;
+}
+
+.container{
+    background-color: rgb(184, 183, 183);
+    z-index: 1;
+    padding: 1.5em;
+    border-radius:2em;
+}
+
+.container p{
+    color:rgb(43, 43, 43)
+}
+
+table{
+    /* border:1.5px; */
+}
+
+td{
+    padding: .5em;
+    margin: 0em;
+    text-align: center;
+    border: 1px solid black;
+}
+
+.hed{
+    font-weight: bold;
+}
+
+th{
+
+    background: rgba(0, 0, 0, 0);
+}
+
+.hed :hover{
+    background: none;
+}

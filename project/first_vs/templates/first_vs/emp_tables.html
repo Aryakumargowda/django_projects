@@ -1,51 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employees</title>
+    <link rel="stylesheet" href="{% static 'first_vs/emptab.css'%}">
+</head>
 <style>
-    td{
-        padding: .51em;
-        border: 2px solid black;
-        margin: 0;
-    }
-    .but{
-        display: flex;
-        border: 2px solid red;
+    .but button {
+        padding: .5em;
+        border: none;
+        border-radius: .3em;
+        color: rgb(52, 43, 43);
+        background: rgb(229, 231, 88);
+        box-shadow: 4px 4px 8px rgb(152, 154, 60);
+        cursor: pointer;
     }
 
-    .but button,.but input{
-        margin: .5em;
+    td input {
+        padding: .5em;
+        border: none;
+        border-radius: .3em;
+        color: antiquewhite;
+        background: rgb(231, 88, 88);
+        box-shadow: 4px 4px 8px rgb(122, 48, 48);
+        cursor: pointer;
+    }
+
+    tr:hover {
+        background: rgb(224, 224, 224);
+    }
+
+    .rd {
+        background: rgb(207, 104, 104);
+        color: antiquewhite;
     }
 </style>
-from employee tables
-<table>
-    {% load %}
-    <th>
-        <tr>
-            <td>SSN</td>
-            <td>Employee name</td>
-            <td>Username</td>
-            <td>Salary</td>
-            <td>Employee address</td>
-            <td>Employee phone</td>
-            <td>Gender</td>
-            <td>Department</td>
-            <td>Join date</td>
-            <td>action</td>
-        </tr>
-    </th>
-    {% for i in get %}
-    <tr>
-        <td>{{i.Ssn}}</td>
-        <td>{{ i.E_name }}</td>
-        <td>{{ i.username }}</td>
-        <td>{{ i.Salary }}</td>
-        <td>{{ i.E_address }}</td>
-        <td>{{ i.E_phone }}</td>
-        <td>{{ i.Gender }}</td>
-        <td>{{ i.Department }}</td>
-        <td>{{ i.Join_date }}</td>
-        <td class="but"><a href="{% url 'eupdate' i.id %}"><button>Edit</button></a>
-            <form action="{% url 'edelete' i.id %}" method="post">
-                {% csrf_token %}
-                <input type="submit" name="delete" id="delete" value="Delete"></form>
-        </td>
-    </tr>
-    {% endfor %}
-</table>
+
+<body>
+    <header>
+        {% load static %}
+        {% load %}
+        <div class="head">
+            <div class="left">
+                <div class="logo"><a href="#"><img src="{% static 'first_vs/logos/tgp_white.png' %}" alt="logo"></a>
+                </div>
+            </div>
+            <div class="right">
+                <ul>
+                    <li>
+                        <a href="{% url 'hello' %}" rel="noopener noreferrer"><span class="text1">Profile</span></a>
+                    </li>
+                    <li>
+                        <a href="{% url 'customers' %}">
+                            <span class="text">Customers</span></a>
+                    </li>
+                    <li>
+                        <a href="{% url 'emp_register' %}">
+                            <span class="text">Employees+</span></a>
+                    </li>
+                    <li>
+                        <a href="">
+                            <span class="text1">About</span></a>
+                    </li>
+
+                </ul>
+
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <p>Employees Data</p>
+        <div class="container">
+            <p class="inf">Employee Table</p>
+            <table>
+                {% load %}
+                <th>
+                    <tr class="hed">
+                        <td>SSN</td>
+                        <td>Employee name</td>
+                        <td>Username</td>
+                        <td>Salary</td>
+                        <td>Employee phone</td>
+                        <td>Gender</td>
+                        <td>Department</td>
+                        <td>Join date</td>
+                        <td colspan="2">action</td>
+                    </tr>
+                </th>
+                {% for i in get %}
+                <tr>
+                    <td>{{i.Ssn}}</td>
+                    <td>{{ i.E_name }}</td>
+                    <td>{{ i.username }}</td>
+                    <td>{{ i.Salary }}</td>
+                    <td>{{ i.E_phone }}</td>
+                    <td>{{ i.Gender }}</td>
+                    <td>{{ i.Department }}</td>
+                    <td>{{ i.Join_date }}</td>
+                    <td class="but"><a href="{% url 'eupdate' i.Ssn %}"><button>Edit</button></a></td>
+                    <td>
+                        <form action="{% url 'edelete' i.Ssn %}" method="post">
+                            {% csrf_token %}
+                            <input type="submit" name="delete" id="delete" value="Delete">
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </main>
+</body>
+
+</html>

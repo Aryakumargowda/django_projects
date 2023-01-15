@@ -171,6 +171,7 @@ form p{
 form input{
     height: 2.6em;
     width: 29em;
+    padding:.5em;
     border-radius: 1.2em;
     border:solid 2px rgb(141, 214, 214);
     box-shadow: 10px 5px 15px rgb(99, 128, 128);
@@ -179,6 +180,7 @@ form input{
 }
 
 textarea{
+    padding:.5em;
     height: 5em;
     width: 29em;
     border-radius: 1.5em;
