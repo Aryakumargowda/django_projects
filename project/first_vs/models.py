@@ -55,5 +55,15 @@ class Employees(models.Model):
     Department=models.CharField(max_length=50)
     password=models.CharField(max_length=60,default="0")
     Join_date=models.DateField()
+    manager=models.BooleanField(default=False)
     def __str__(self):
         return self.E_name
+
+class Department(models.Model):
+    Dnumber=models.IntegerField(primary_key=True)
+    Dname=models.CharField(max_length=100)
+    D_manager=models.CharField(max_length=100,null=True)
+    mgr_ssn=models.IntegerField(unique=True,null=True)
+    Ssn=models.IntegerField(null=True)
+    def __str__(self):
+        return self.Dname

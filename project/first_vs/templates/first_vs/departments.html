@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static%}
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Departments</title>
+    <link rel="stylesheet" href="{%static 'first_vs/empregister.css' %}">
+</head>
+<body>
+    <header>
+        <div class="head">
+            <div class="left">
+                <div class="logo"><a href="#"><img src="{% static 'first_vs/logos/tgp_white.png'%}"alt="logo"></a></div>
+            </div>
+            <div class="right">
+                <ul>
+                    <li>
+                        <a href="{% url 'home' %}"><span class="log"><img src="{% static 'first_vs/logos/home.svg'%}"  alt=""></span>
+                        <span class="text1">Home</span></a></li>
+                    <li>
+                        <a href="#"><span class="log"><img src="{% static 'first_vs/logos/bag.svg'%}" alt=""></span>
+                        <span class="text">Collections</span></a>
+                    </li>
+                    <li>
+                        <a href="#"><span class="log"><img src="{% static 'first_vs/logos/phone.svg'%}" alt=""></span>
+                        <span class="text">Contact us</span></a>
+                    </li>
+                    <li>
+                        <a href="{% url 'about' %}"><span class="log"><img src="{% static 'first_vs/logos/question.svg'%}" alt=""></span>
+                        <span class="text1">About</span></a>
+                    </li>
+
+                </ul>
+                
+            </div>
+        </div>
+    </header>
+    <main>
+        <div class="main_container">
+            <h2>New Department Registeration</h2>
+            <div class="cards">
+                <form action="" method="POST">
+                    {% csrf_token %}
+                    {{ err }} <br>
+                    {{ err1 }}
+                    <p> Department Name: </p><input type="text" name="deptn" id="deptn" placeholder="Department Name:"> 
+                    <p> Ssn: </p><input type="text" name="ssn" id="ssn" placeholder="Employee no:"> 
+                    <div class="buttons">
+                        <button type="submit" >Submit
+                            <!-- <img src="{% static 'first_vs/logos/publish.svg'%}" alt="submit"> -->
+                    </button>
+                        <button type="reset">Reset</button>
+                    </div>
+                </form>
+            </div>
+            <div class="social_logos"> 
+                <div class="logos"><img src="{% static 'first_vs/logos/facebook.png'%}" alt="facebook"></div>
+                <div class="logos"><img src="{% static 'first_vs/logos/instagram.png'%}" alt="Instagram"></div>
+                <div class="logos"><img src="{% static 'first_vs/logos/twitter.png'%}" alt="Twitter"></div>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <div class="foot_container">
+            <div class="credits">
+                <h2>Credits:</h2>
+                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ducimus alias architecto sequi eius cumque, excepturi esse in officia temporibus, vero eaque, culpa error. Voluptatibus fugiat quos earum nam aliquid sint officia ab placeat adipisci eveniet, aut corporis.
+                    <br> <br> Molestias vel fuga earum voluptatibus. Quidem asperiores corrupti autem aut sit ad vero!</p>
+            </div>
+            <div class="login_sec">
+                <h2>Pages:</h2>
+                <ul>
+                    <li><a href="http://" target="_blank" rel="noopener noreferrer">Admin</a></li>
+                    <li><a href="http://" target="_blank" rel="noopener noreferrer">Employee</a></li>
+                    <li><a href="http://" target="_blank" rel="noopener noreferrer">User</a></li>
+                    <li><a href="http://" target="_blank" rel="noopener noreferrer">Privacy Policy</a></li>
+                    <li><a href="http://" target="_blank" rel="noopener noreferrer">Feedback</a></li>
+                </ul>
+            </div>
+            <div class="foot">
+               <p>Copyright ©️ Arya|Ashika | TheProjectGarments | All rights reserved</p> 
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

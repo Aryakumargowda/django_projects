@@ -4,7 +4,7 @@ from http.client import HTTPResponse
 import random
 # from django.contrib import messages
 from django.shortcuts import render,redirect
-from .models import Login,Registered_user,Customer,Bills,Employees
+from .models import Login,Registered_user,Customer,Bills,Employees,Department
 
 flagg=0
 # key=Fernet.generate_key()
@@ -145,6 +145,7 @@ def emp_reg(request):
         gender=request.POST['gender']
         dept=request.POST['dept']
         username=request.POST['userid']
+        mgr=request.POST['mgr']
         date=datetime.datetime.now()
         chk=Employees.objects.all()
         for i in chk:
@@ -153,6 +154,27 @@ def emp_reg(request):
                 flag=1
                 return render(request, 'first_vs/emp_register.html',{'err1':err1})
         if flag==0:
+            # --------------manager logic------------------
+            # if mgr==True:
+            #     reg=Department.objects.all()
+            #     for j in reg:
+            #         if j.Dname==dept:
+            #             flag=1
+            #     if flag==1:
+            #         reg=Department.objects.get(Dname=dept)
+            #         if reg.D_manager:
+            #             err="manager already exist for this deartment"
+            #             return render(request,'first_vs/emp_register.html',{'err':err})
+            #         else:
+            #             last=Department.objects.last()
+            #             dno=0
+            #             if last.Dnumber>1:
+            #                 while last.mgr_ssn>=dno:
+            #                     dno+=1
+            #             dep=Department(D_manager=name,mgr_ssn=dno,Ssn=ssn).pk=dno
+            #     else:
+            #         err="Department dosent exist"
+            #         return render(request,'first_vs/emp_register.html',{'err':err})
             register=Employees(Ssn=ssn,E_name=name,username=username,Salary=salary,E_address=adder,E_phone=phone,Gender=gender,Department=dept,Join_date=date)
             register.save()
             return redirect('emp_tab')
@@ -289,8 +311,46 @@ def ch_pass(request):
         # return redirect('err')
     return render(request,'first_vs/emp_passchange.html',{'err':err})
 
+def dept(request):
+    flag=0
+    if request.method=="POST":
+        dname=request.POST['deptn']
+        # mgrname=request.POST['mgrname']
+        essn=int(request.POST['ssn'])
+        chk=Department.objects.all()
+        for i in chk:
+            if i.Dname==dname:
+                err='Department already exist'
+                return render(request,'first_vs/departments.html',{'err':err})
+        chk1=Employees.objects.all()
+        for j in chk1:
+            if j.Ssn==essn:
+                flag=1
+                id=Department.objects.count()+1
+                if id>1:
+                    last=Department.objects.last()
+                    while int(last.Ssn) >= id:
+                        id+=1
+                ssn=id
+                mgr=Department.objects.count()+1
+                if mgr>1:
+                    last=Department.objects.last()
+                    while int(last.Ssn) >= mgr:
+                        mgr+=1
+                mgrssn=mgr
+                nam=Employees.objects.get(pk=essn)
+                reg=Department(Dnumber=ssn,Dname=dname,D_manager=nam.E_name,mgr_ssn=mgrssn,Ssn=essn)
+                reg.save()
+         
+        err1="Employee with that usn dosen't exist"
+        return render(request,'first_vs/departments.html',{'err1':err1})
+    return render(request,'first_vs/departments.html')
+
 def succ(request):
     return render(request, 'first_vs/succ.html')
+
+def about(request):
+    return render(request, 'first_vs/about.html')
 
 def err(request):
     return render(request,'first_vs/err.html')

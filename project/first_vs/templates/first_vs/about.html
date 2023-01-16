@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About</title>
+    <link rel="stylesheet" href="{%static 'first_vs/home.css' %}">
+</head>
+<body>
+    {% load static %}
+    <header>
+        <div class="head">
+            <div class="left">
+                <div class="logo"><a href="#"><img src="{% static 'first_vs/logos/tpg2.png'%}" alt="logo"></a></div>
+            </div>
+            <div class="right">
+                <ul>
+                    <li>
+                        <a href="#"><span class="log"><img src="{% static 'first_vs/logos/home.svg'%}" alt=""></span>
+                            <span class="text1">Home</span></a>
+                    </li>
+                    <li>
+                        <a href="#"><span class="log"><img src="{% static 'first_vs/logos/department.png'%}" alt=""></span>
+                            <span class="text">Departments</span></a>
+                    </li>
+                    <li>
+                        <a href="#"><span class="log"><img src="{% static 'first_vs/logos/phone.svg'%}" alt=""></span>
+                            <span class="text">Contact us</span></a>
+                    </li>
+                    <li>
+                        <a href="#"><span class="log"><img src="{% static 'first_vs/logos/question.svg'%}"
+                                    alt=""></span>
+                            <span class="text1">About</span></a>
+                    </li>
+
+                </ul>
+
+            </div>
+        </div>
+    </header>
+</body>
+</html>

@@ -11,6 +11,20 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&family=Raleway&display=swap" rel="stylesheet">
 </head>
+<style>
+    .adlog,.emplog{
+        height:2em;
+        text-align: center;
+        background: #d6b5ab;
+        border: none;
+        border-radius: 2em;
+        margin-top: 2em;
+        cursor: pointer;
+    }
+    button{
+        padding:.5em;
+    }
+</style>
 <body>
     <header>
         <div class="head">
@@ -32,7 +46,7 @@
                             <span class="text">Contact us</span></a>
                     </li>
                     <li>
-                        <a href="#"><span class="log"><img src="{% static 'first_vs/logos/question.svg'%}"
+                        <a href="{% url 'about' %}"><span class="log"><img src="{% static 'first_vs/logos/question.svg'%}"
                                     alt=""></span>
                             <span class="text1">About</span></a>
                     </li>
@@ -55,6 +69,9 @@
                     HERE
                 </a>
             </p>
+           <a href="{% url 'login' %}"> <button class="adlog">Admin Login</button></a>
+          <a href="{% url 'emplogin' %}">  <button class="emplog">Employee Login</button></a>
+
         </div>
         <div class="social_logos"> 
             <div class="logos"><img src="{% static 'first_vs/logos/facebook.png'%}" alt="facebook"></div>

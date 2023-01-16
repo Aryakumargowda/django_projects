@@ -213,12 +213,13 @@ form button{
     /* border: solid 2px rgb(156, 156, 190); */
     width: 5em;
     height:2.5em;
-    background: rgb(126, 145, 165);
+    background: rgb(120, 204, 204);
     cursor: pointer;
-    transition: .2s;
+    transition: .3s;
     border-radius: .7em;
     box-shadow: 5px 5px 10px rgba(110, 110, 248, 0.5),inset .05px .5px 10px rgba(110, 110, 248, 0.539);
-    color: rgb(240, 230, 230);
+    color: rgb(30, 28, 29);
+    font-weight: 600;
 }
 
 .buttons{

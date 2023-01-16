@@ -8,6 +8,36 @@
     <title>Employee Register</title>
     <link rel="stylesheet" href="{%static 'first_vs/empregister.css' %}">
 </head>
+<style>
+
+    .rad input{
+        margin: 0;
+        padding: 0;
+    }
+    .radio{
+        width: 1em;
+        height: 1em;
+        border-radius: 50%;
+        margin: 0;
+        box-shadow: none;
+    }
+    label{
+        margin: 0;
+        box-shadow: none;
+        margin-right:10em;
+        display: block;
+
+    }
+
+    .rad{
+        display: flex;
+        justify-content: space-between;
+        /* background: rgb(247, 185, 122); */
+
+    }
+   
+
+</style>
 <body>
     <header>
         <div class="head">
@@ -17,7 +47,7 @@
             <div class="right">
                 <ul>
                     <li>
-                        <a href="#"><span class="log"><img src="{% static 'first_vs/logos/home.svg'%}"  alt=""></span>
+                        <a href="{% url 'home' %}"><span class="log"><img src="{% static 'first_vs/logos/home.svg'%}"  alt=""></span>
                         <span class="text1">Home</span></a></li>
                     <li>
                         <a href="#"><span class="log"><img src="{% static 'first_vs/logos/bag.svg'%}" alt=""></span>
@@ -58,11 +88,24 @@
                     <input type="text" name="userid" id="userid" placeholder="Username:"> 
                     <p> Working Department:</p>
                     <input type="text" name="dept" id="dept" placeholder="Department:"> 
-                    <div class="buttons">
-                        <button type="submit" >Submit
-                            <!-- <img src="{% static 'first_vs/logos/publish.svg'%}" alt="submit"> -->
-                    </button>
-                        <button type="reset">Reset</button>
+                    {{ err }}
+                    <p> Is Manager:</p>
+                    <div class="rad">
+                        <div class="inrad">
+                            
+                            <Label for="True">Yes</Label>
+                            <input type="radio" name="mgr" id="mgr" value="True" class="radio"> 
+                        </div>
+                        <div class="inrad">
+                            <Label for="False">No</Label>
+                            <input type="radio" name="mgr" id="mgr" value="False" class="radio"> 
+                        </div>
+                    </div>
+                        <div class="buttons">
+                            <button type="submit" >Submit
+                                <!-- <img src="{% static 'first_vs/logos/publish.svg'%}" alt="submit"> -->
+                            </button>
+                            <button type="reset">Reset</button>
                     </div>
                 </form>
             </div>
@@ -91,7 +134,7 @@
                 </ul>
             </div>
             <div class="foot">
-               <p>Copyright ©️ 2022-2030 | TheProjectGarments | All rights reserved</p> 
+               <p>Copyright ©️ |Arya|Ashika | TheProjectGarments | All rights reserved</p> 
             </div>
         </div>
     </footer>
