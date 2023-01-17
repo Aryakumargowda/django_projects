@@ -12,17 +12,34 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&family=Raleway&display=swap" rel="stylesheet">
 </head>
 <style>
-    .adlog,.emplog{
-        height:2em;
+    
+    a button{
         text-align: center;
-        background: #d6b5ab;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: #fb9f82d4;
         border: none;
         border-radius: 2em;
-        margin-top: 2em;
         cursor: pointer;
+        height:2em;
+        margin-top: 2em;
+        padding:.8em;
+        font-weight: 700;
+        box-shadow: 5px 5px 8px #3c251fd4;
+        transition: .2s;
     }
-    button{
-        padding:.5em;
+    
+    a button:hover{
+        height:2.5em;
+        box-shadow: 5px 5px 15px  #b37664d4;
+
+    }
+    .but{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
     }
 </style>
 <body>
@@ -38,7 +55,7 @@
                             <span class="text1">Home</span></a>
                     </li>
                     <li>
-                        <a href="#"><span class="log"><img src="{% static 'first_vs/logos/department.png'%}" alt=""></span>
+                        <a href="{% url 'depttable' %}"><span class="log"><img src="{% static 'first_vs/logos/department.png'%}" alt=""></span>
                             <span class="text">Departments</span></a>
                     </li>
                     <li>
@@ -69,8 +86,12 @@
                     HERE
                 </a>
             </p>
-           <a href="{% url 'login' %}"> <button class="adlog">Admin Login</button></a>
-          <a href="{% url 'emplogin' %}">  <button class="emplog">Employee Login</button></a>
+            <div class="but">
+                <a href="{% url 'login' %}"> <button class="adlog">Admin Login</button></a>
+            </div>
+            <div class="but">
+                <a href="{% url 'emplogin' %}">  <button class="emplog">Employee Login</button></a>
+            </div>
 
         </div>
         <div class="social_logos"> 

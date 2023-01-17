@@ -50,8 +50,8 @@
                         <a href="{% url 'home' %}"><span class="log"><img src="{% static 'first_vs/logos/home.svg'%}"  alt=""></span>
                         <span class="text1">Home</span></a></li>
                     <li>
-                        <a href="#"><span class="log"><img src="{% static 'first_vs/logos/bag.svg'%}" alt=""></span>
-                        <span class="text">Collections</span></a>
+                        <a href="#"><span class="log"><img src="{% static 'first_vs/logos/department.png'%}" alt=""></span>
+                        <span class="text">Departments</span></a>
                     </li>
                     <li>
                         <a href="#"><span class="log"><img src="{% static 'first_vs/logos/phone.svg'%}" alt=""></span>
@@ -89,18 +89,6 @@
                     <p> Working Department:</p>
                     <input type="text" name="dept" id="dept" placeholder="Department:"> 
                     {{ err }}
-                    <p> Is Manager:</p>
-                    <div class="rad">
-                        <div class="inrad">
-                            
-                            <Label for="True">Yes</Label>
-                            <input type="radio" name="mgr" id="mgr" value="True" class="radio"> 
-                        </div>
-                        <div class="inrad">
-                            <Label for="False">No</Label>
-                            <input type="radio" name="mgr" id="mgr" value="False" class="radio"> 
-                        </div>
-                    </div>
                         <div class="buttons">
                             <button type="submit" >Submit
                                 <!-- <img src="{% static 'first_vs/logos/publish.svg'%}" alt="submit"> -->

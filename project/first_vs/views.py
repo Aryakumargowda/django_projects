@@ -145,7 +145,7 @@ def emp_reg(request):
         gender=request.POST['gender']
         dept=request.POST['dept']
         username=request.POST['userid']
-        mgr=request.POST['mgr']
+        # mgr=request.POST['mgr']
         date=datetime.datetime.now()
         chk=Employees.objects.all()
         for i in chk:
@@ -287,8 +287,20 @@ def e_update(request,id):
 def e_delete(request,id):
     if request.method=='POST':
         pi=Employees.objects.get(pk=id)
+        gt=Department.objects.all()
         pi.delete()
-        return redirect('emp_tab')
+        for i in gt:
+            if i.Ssn==int(id):
+                ss=i.mgr_ssn
+                mgr=i.D_manager
+                dno=i.Dnumber
+                name=i.Dname
+        rt=Department(Dnumber=dno,D_manager=mgr,mgr_ssn=ss,Ssn=int(id))
+        rts.save()
+        rt.delete()
+        rts=Department(Dnumber=dno,Dname=name)
+        msg="WARNING!!!,Enter the manager name before proceeding"
+        return render(request,'first_vs/dept_tables.html',{'msg':msg})
 
 # -------------------------------change emmp-password-----------------------------
 
@@ -315,7 +327,6 @@ def dept(request):
     flag=0
     if request.method=="POST":
         dname=request.POST['deptn']
-        # mgrname=request.POST['mgrname']
         essn=int(request.POST['ssn'])
         chk=Department.objects.all()
         for i in chk:
@@ -324,7 +335,7 @@ def dept(request):
                 return render(request,'first_vs/departments.html',{'err':err})
         chk1=Employees.objects.all()
         for j in chk1:
-            if j.Ssn==essn:
+            if j.Ssn==int(essn):
                 flag=1
                 id=Department.objects.count()+1
                 if id>1:
@@ -341,10 +352,14 @@ def dept(request):
                 nam=Employees.objects.get(pk=essn)
                 reg=Department(Dnumber=ssn,Dname=dname,D_manager=nam.E_name,mgr_ssn=mgrssn,Ssn=essn)
                 reg.save()
-         
-        err1="Employee with that usn dosen't exist"
-        return render(request,'first_vs/departments.html',{'err1':err1})
+        if flag==0:
+            err1="Employee with that usn dosen't exist"
+            return render(request,'first_vs/departments.html',{'err1':err1})
     return render(request,'first_vs/departments.html')
+
+def dept_view(request):
+    gt=Department.objects.all()
+    return render(request,'first_vs/dept_tables.html',{'gt':gt})
 
 def succ(request):
     return render(request, 'first_vs/succ.html')

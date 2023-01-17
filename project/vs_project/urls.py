@@ -45,6 +45,7 @@ urlpatterns = [
     path('eupd/eupdate/<int:id>',views.e_update,name='eupdater'),
     path('chpass/',views.ch_pass,name='changepassword'),
     path('dept/',views.dept,name='dept'),
+    path('depttab/',views.dept_view,name='depttable'),
     path('about/',views.about,name='about'),
     ]
 

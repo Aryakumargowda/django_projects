@@ -135,7 +135,7 @@ span{
 /* -----------------------------main--------------------------------------- */
 main{
     margin-top: 1.5em;
-    height: 100vh;
+    height: 110vh;
     overflow: hidden;
 }
 
@@ -152,7 +152,7 @@ main{
     font-family: 'Poppins', sans-serif;
     font-size: 4em;
     text-shadow: 4px 4px 5px #653223;
-    padding: 1.2em;
+    padding: 1em;
     padding-bottom: .5em;
 }
 
@@ -179,7 +179,7 @@ main{
 main .back{
     overflow: hidden;
     position: absolute;
-    height: 100vh;
+    height: 110vh;
     width: 98.8vw;
     filter: blur(2px);
     z-index: -1;

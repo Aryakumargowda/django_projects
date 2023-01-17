@@ -55,7 +55,7 @@ class Employees(models.Model):
     Department=models.CharField(max_length=50)
     password=models.CharField(max_length=60,default="0")
     Join_date=models.DateField()
-    manager=models.BooleanField(default=False)
+    # manager=models.BooleanField(default=False)
     def __str__(self):
         return self.E_name
 

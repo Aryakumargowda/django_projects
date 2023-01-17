@@ -175,6 +175,10 @@ h3{
     opacity: 1;
 }
 
+.main_content{
+    
+}
+
 ::-webkit-scrollbar{
     width: 0;
 }
