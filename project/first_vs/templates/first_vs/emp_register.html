@@ -35,7 +35,9 @@
         /* background: rgb(247, 185, 122); */
 
     }
-   
+   .error{
+    color:rgb(238, 55, 55);
+   }
 
 </style>
 <body>
@@ -88,7 +90,9 @@
                     <input type="text" name="userid" id="userid" placeholder="Username:"> 
                     <p> Working Department:</p>
                     <input type="text" name="dept" id="dept" placeholder="Department:"> 
-                    {{ err }}
+                    <div class="error">
+                        {{ err }}
+                    </div>
                         <div class="buttons">
                             <button type="submit" >Submit
                                 <!-- <img src="{% static 'first_vs/logos/publish.svg'%}" alt="submit"> -->

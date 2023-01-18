@@ -55,16 +55,12 @@
                             <span class="text1">Home</span></a>
                     </li>
                     <li>
-                        <a href="{% url 'customers' %}">
-                            <span class="text">Customers</span></a>
+                        <a href="#">
+                            <span class="text">Contact us</span></a>
                     </li>
                     <li>
-                        <a href="{% url 'emp_tab' %}">
-                            <span class="text">Employees</span></a>
-                    </li>
-                    <li>
-                        <a href="{% url 'dept' %}">
-                            <span class="text1">Department+</span></a>
+                        <a href="{% url 'about' %}">
+                            <span class="text1">About</span></a>
                     </li>
 
                 </ul>
@@ -84,7 +80,6 @@
                         <td>Department Manager</td>
                         <td>Manager Id</td>
                         <td>Emp_Id</td>
-                        <td colspan="2">Action</td>
                     </tr>
                 </th>
                 {% for i in gt %}
@@ -94,11 +89,6 @@
                     <td>{{ i.D_manager }}</td>
                     <td>{{ i.mgr_ssn }}</td>
                     <td>{{ i.Ssn }}</td>
-                    <td class="but"><a href="{% url 'deptupdate' i.Dnumber%}"><button>Edit</button></a></td>
-                    <td>
-                        <form action="" method="post">
-                            {% csrf_token %}
-                            <input type="submit" name="delete" id="delete" value="Delete">
                         </form>
                     </td>
                 </tr>

@@ -8,6 +8,11 @@
     <title>Departments</title>
     <link rel="stylesheet" href="{%static 'first_vs/empregister.css' %}">
 </head>
+<style>
+    input:read-only:hover{
+        cursor: no-drop;
+    }
+</style>
 <body>
     <header>
         <div class="head">
@@ -39,14 +44,17 @@
     </header>
     <main>
         <div class="main_container">
-            <h2>New Department Registeration</h2>
+            <h2>Department updation</h2>
             <div class="cards">
-                <form action="" method="POST">
+                <form action="depupdate/{{ gt.Dnumber }}" method="POST">
                     {% csrf_token %}
                     {{ err }} <br>
                     {{ err1 }}
-                    <p> Department Name: </p><input type="text" name="deptn" id="deptn" placeholder="Department Name:"> 
-                    <p> Ssn: </p><input type="text" name="ssn" id="ssn" placeholder="Employee no:"> 
+                    <p> Department number: </p><input type="text" name="dno" id="dno" placeholder="Manager Name:" value="{{ gt.Dnumber }}" readonly> 
+                    <p> Department Name: </p><input type="text" name="depn" id="depn" placeholder="Manager Name:" value="{{ gt.Dname }}" readonly> 
+                    <p> Manager Name: </p><input type="text" name="mgrn" id="mgrn" placeholder="Manager Name:" value="{{ gt.D_manager }}"> 
+                    <p> Manager Ssn: </p><input type="text" name="mgrssn" id="mgrssn" placeholder="Manager Name:" value="{{ gt.mgr_ssn }}"> 
+                    <p> Ssn: </p><input type="text" name="ssn" id="ssn" placeholder="Employee no:" value="{{ gt.Ssn }}"> 
                     <div class="buttons">
                         <button type="submit" >Submit
                             <!-- <img src="{% static 'first_vs/logos/publish.svg'%}" alt="submit"> -->

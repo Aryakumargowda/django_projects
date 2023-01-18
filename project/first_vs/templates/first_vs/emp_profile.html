@@ -1,54 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     {% load static %}
-    <link rel="stylesheet" href="{% static 'first_vs/empregister.css' %}">
+    <link rel="stylesheet" href="{% static 'first_vs/profile.css' %}">
 </head>
 
 <body>
     <header>
-        {% load  static %}
+        {% load static %}
         <div class="head">
             <div class="left">
-                <div class="logo"><a href="#"><img src="{% static 'first_vs/logos/tgp_white.png'%}"alt="logo"></a></div>
+                <div class="logo"><a href="#"><img src="{% static 'first_vs/logos/tgp_white.png'%}" alt="logo"></a>
+                </div>
             </div>
             <div class="right">
                 <ul>
                     <li>
-                        <a href="{% url 'home' %}"><span class="log"><img src="{% static 'first_vs/logos/home.svg'%}"  alt=""></span>
-                        <span class="text1">Home</span></a></li>
-                    <li>
-                        <a href="#"><span class="log"><img src="{% static 'first_vs/logos/bag.svg'%}" alt=""></span>
-                        <span class="text">Departments</span></a>
+                        <a href="{% url 'home' %}"><span class="log"><img src="{% static 'first_vs/logos/home.svg'%}"
+                                    alt=""></span>
+                            <span class="text1">Home</span></a>
                     </li>
+                    <!-- <li>
+                        <a href="#"><span class="log"><img src="{% static 'first_vs/logos/bag.svg'%}" alt=""></span>
+                            <span class="text">Departments</span></a>
+                    </li> -->
                     <li>
                         <a href="#"><span class="log"><img src="{% static 'first_vs/logos/phone.svg'%}" alt=""></span>
-                        <span class="text">Contact us</span></a>
+                            <span class="text">Contact us</span></a>
                     </li>
                     <li>
-                        <a href="#"><span class="log"><img src="{% static 'first_vs/logos/question.svg'%}" alt=""></span>
-                        <span class="text1">About</span></a>
+                        <a href="{% url 'about' %}"><span class="log"><img src="{% static 'first_vs/logos/question.svg'%}"
+                                    alt=""></span>
+                            <span class="text1">About</span></a>
                     </li>
 
                 </ul>
-                
+
             </div>
         </div>
     </header>
     <main>
-
-        from employee
+        {% load static %}
+        <div class="card">
+            <img src="{% static 'first_vs/logos/userlg.png' %}" alt="">
             {% load %}
-            {% for i in get1 %}
-                {{ i.Ssn }}
-                {{ i.E_name }}
-                {{ i.Department }}
-                {{ i.Salary }}
-        {% endfor %}
+            <div class="contents">
+                {% for i in get1 %}
+                <div class="p">
+                    <div class="p1">Employee Name: <p> {{ i.E_name }} </p></div>
+                    <div class="p1">Employee ID: <p> {{ i.Ssn }} </p></div>
+                </div>
+                <div class="p">
+                    <div class="p1">Department Name: <p> {{ i.Department }} </p> </div>
+                    <div class="p1">Salary: <p> {{ i.Salary }} </p> </div>
+                </div>
+                {% endfor %}
+                <div class="prog">
+                    <label for="att">Attendence: 70%</label>
+                    <meter id="att" value="70" min="0" max="100">70%</meter>
+                </div>
+            </div>
+        </div>
     </main>
 </body>
 

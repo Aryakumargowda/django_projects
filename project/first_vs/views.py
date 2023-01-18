@@ -83,8 +83,10 @@ def customer(request):
             addr=request.POST['add']
             co_name=request.POST['co_name']
             email=request.POST['email']
+            mat=request.POST['mat']
             ord_name=request.POST['ord_name']
             ord_amt=int(request.POST['tot'])
+            due=request.POST['date']
             date=datetime.datetime.now()
             chk=Customer.objects.all()
             for i in chk:
@@ -98,7 +100,7 @@ def customer(request):
                     id+=1
             payed=bills(ord_amt,co_name,id,ord_name)
             if flag==0:
-                reg=Customer(id=id,namei=namei,phone=phone,gst=gst,adder=addr,co_name=co_name,email=email,ord_name=ord_name,ord_amt=ord_amt,pending_payment=payed,date=date)
+                reg=Customer(id=id,namei=namei,phone=phone,gst=gst,adder=addr,co_name=co_name,email=email,materials=mat,ord_name=ord_name,ord_amt=ord_amt,pending_payment=payed,due_date=due,date=date)
                 reg.save()
                 return redirect('customers')
         return render(request, 'first_vs/customer.html',{'err':err,'usr':usr})
@@ -154,27 +156,6 @@ def emp_reg(request):
                 flag=1
                 return render(request, 'first_vs/emp_register.html',{'err1':err1})
         if flag==0:
-            # --------------manager logic------------------
-            # if mgr==True:
-            #     reg=Department.objects.all()
-            #     for j in reg:
-            #         if j.Dname==dept:
-            #             flag=1
-            #     if flag==1:
-            #         reg=Department.objects.get(Dname=dept)
-            #         if reg.D_manager:
-            #             err="manager already exist for this deartment"
-            #             return render(request,'first_vs/emp_register.html',{'err':err})
-            #         else:
-            #             last=Department.objects.last()
-            #             dno=0
-            #             if last.Dnumber>1:
-            #                 while last.mgr_ssn>=dno:
-            #                     dno+=1
-            #             dep=Department(D_manager=name,mgr_ssn=dno,Ssn=ssn).pk=dno
-            #     else:
-            #         err="Department dosent exist"
-            #         return render(request,'first_vs/emp_register.html',{'err':err})
             register=Employees(Ssn=ssn,E_name=name,username=username,Salary=salary,E_address=adder,E_phone=phone,Gender=gender,Department=dept,Join_date=date)
             register.save()
             return redirect('emp_tab')
@@ -196,7 +177,9 @@ def emplogin(request):
                 get=emp_profile()
                 get1=Employees.objects.filter(username=username)
                 return render(request,'first_vs/emp_profile.html',{'get1':get1})
-        return redirect('err')
+        if flagg==0:
+            err1="Username or password is Incorrect"
+            return render(request,'first_vs/emp_login.html',{'err1':err1})
     return render(request,'first_vs/emp_login.html')
 
 def emp_profile():
@@ -250,6 +233,8 @@ def update(request,id):
 def delete(request,id):
     if request.method=='POST':
         pi=Customer.objects.get(pk=id)
+        bil=Bills.objects.get(customer_id=id)
+        bil.delete()
         pi.delete()
         return redirect('customers')
 
@@ -296,9 +281,9 @@ def e_delete(request,id):
                 dno=i.Dnumber
                 name=i.Dname
         rt=Department(Dnumber=dno,D_manager=mgr,mgr_ssn=ss,Ssn=int(id))
-        rts.save()
         rt.delete()
         rts=Department(Dnumber=dno,Dname=name)
+        rts.save()
         msg="WARNING!!!,Enter the manager name before proceeding"
         return render(request,'first_vs/dept_tables.html',{'msg':msg})
 
@@ -308,8 +293,8 @@ def ch_pass(request):
     err=''
     if request.method=="POST":
         eid=request.POST["user"]
-        pwd=request.POST["pass"]
-        pwd1=request.POST["pass1"]
+        pwd=str(request.POST["pass"])
+        pwd1=str(request.POST["pass1"])
         chk=Employees.objects.all()
         for i in chk:
             if i.username==eid:
@@ -346,12 +331,13 @@ def dept(request):
                 mgr=Department.objects.count()+1
                 if mgr>1:
                     last=Department.objects.last()
-                    while int(last.Ssn) >= mgr:
+                    while int(last.mgr_ssn) >= mgr:
                         mgr+=1
                 mgrssn=mgr
                 nam=Employees.objects.get(pk=essn)
                 reg=Department(Dnumber=ssn,Dname=dname,D_manager=nam.E_name,mgr_ssn=mgrssn,Ssn=essn)
                 reg.save()
+                return redirect('depttable')
         if flag==0:
             err1="Employee with that usn dosen't exist"
             return render(request,'first_vs/departments.html',{'err1':err1})
@@ -360,6 +346,33 @@ def dept(request):
 def dept_view(request):
     gt=Department.objects.all()
     return render(request,'first_vs/dept_tables.html',{'gt':gt})
+
+def home_dpt(request):
+    gt=Department.objects.all()
+    return render(request,'first_vs/home_dept.html',{'gt':gt})
+
+def dep_up(request,id):
+    if request.method=="POST":
+        gt=Department.objects.get(pk=id)
+    else:
+        gt=Department.objects.get(pk=id)
+    return render(request,'first_vs/dept_edit.html',{'gt':gt})
+
+def dep_update(request,id):
+    if request.method=="POST":
+        name=request.POST['mgrn']
+        dno=request.POST['dno']
+        mgssn=request.POST['mgrssn']
+        ssn=request.POST['ssn']
+        department=request.POST['depn']
+        ob=Department.objects.get(Dnumber=id)
+        ob.Dname = department
+        ob.Dnumber=dno
+        ob.D_manager=name
+        ob.mgr_ssn=mgssn
+        ob.Ssn=ssn
+        ob.save()
+        return redirect('depttable')
 
 def succ(request):
     return render(request, 'first_vs/succ.html')

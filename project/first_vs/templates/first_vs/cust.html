@@ -36,6 +36,10 @@
         background: rgb(207, 104, 104);
         color: antiquewhite;
     }
+    .green{
+        background: rgb(85, 147, 85);
+        color: black;
+    }
 </style>
 <body>
     <header>
@@ -75,19 +79,22 @@
         <div class="cards">
             <div class="contents">
                 <div class="content1">
+                    <h3>Customer list</h3>
                     <div class="main_content">
-                        <h3>Customer list</h3>
                         <table>
-                            <tr class="tab_head">
-                                <td>Name</td>
-                                <td>GST</td>
-                                <td>Company Name</td>
-                                <td>Email</td>
-                                <td>Order Name</td>
-                                <td>Ordered date</td>
-                                <td>Total amount</td>
-                                <td colspan="2">Action</td>
-                            </tr>
+                           <th>
+
+                               <tr class="tab_head">
+                                   <td>Name</td>
+                                   <td>GST</td>
+                                   <td>Company Name</td>
+                                   <td>Email</td>
+                                   <td>Order Name</td>
+                                   <td>Ordered date</td>
+                                   <td>Total amount</td>
+                                   <td colspan="2">Action</td>
+                                </tr>
+                            </th>
                             {% for i in tab %}
                             <tr>
                                 <td> {{ i.namei }}</td>
@@ -120,20 +127,20 @@
                 </div>
                 <div class="content2">
 
+                    <h3>Materials</h3>
                     <div class="main_content1">
-                        <h3>Materials</h3>
                         <table>
                             <tr class="tab_head">
-                                <td>Name</td>
                                 <td>Company Name</td>
+                                <td>Material</td>
                                 <td>Order Name</td>
                                 <td>Ordered date</td>
                                 <td>Total amount</td>
                             </tr>
                             {% for i in tab %}
                             <tr>
-                                <td> {{ i.namei }}</td>
                                 <td> {{ i.co_name }}</td>
+                                <td class="green"> {{ i.materials }}</td>
                                 <td> {{ i.ord_name }}</td>
                                 <td> {{ i.date }}</td>
                                 <td> {{ i.pending_payment }}</td>
@@ -155,8 +162,8 @@
                 </div>
                 <div class="content3">
 
+                    <h3>Orders</h3>
                     <div class="main_content2">
-                        <h3>Orders</h3>
                         <table>
                             <tr class="tab_head">
                                 <td>Name</td>
@@ -190,8 +197,8 @@
                 </div>
                 <div class="content4">
 
+                    <h3>Bills/Order value</h3>
                     <div class="main_content3">
-                        <h3>Bills/Order value</h3>
                         <table>
                             <tr class="tab_head">
                                 <td>Customer id</td>
@@ -229,18 +236,26 @@
                 </div>
                 <div class="content5">
 
+                    <h3>Due Date</h3>
                     <div class="main_content4">
-                        <h3>Customer list</h3>
-                        <p>
-                            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vitae ducimus inventore commodi
-                            aut
-                            quod dolore quo molestias impedit ullam ratione. Quam saepe quidem maiores expedita maxime
-                            unde
-                            dicta soluta excepturi at ipsam repellendus, quia obcaecati corporis itaque. Nisi soluta
-                            alias
-                            eligendi ipsa est cupiditate maxime mollitia ut molestias corrupti repudiandae inventore
-                            officiis quas impedit aliquam illo aut maiores temporibus fugit dignissimos excepturi,
-                            voluptatem veniam delectus. Totam, blanditiis? Quas, fugit cupiditate?</p>
+                        <table>
+                            <tr class="tab_head">
+                                <td>Customer id</td>
+                                <td>Order Name</td>
+                                <td>Ordered date</td>
+                                <td>Due Date</td>
+                                <td>Total amount</td>
+                            </tr>
+                            {% for i in tab %}
+                            <tr>
+                                <td> {{ i.id }}</td>
+                                <td> {{ i.ord_name }}</td>
+                                <td> {{ i.date }}</td>
+                                <td> {{ i.due_date }}</td>
+                                <td> {{ i.pending_payment }}</td>
+                            </tr>
+                            {% endfor %}
+                        </table>
                     </div>
                     <div class="control_bar">
                         <div class="list4"> <img src="{% static 'first_vs/logos/menu.svg'%}" alt="list" id="list"></div>

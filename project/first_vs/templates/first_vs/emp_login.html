@@ -8,6 +8,16 @@
     {% load static %}
     <link rel="stylesheet" href="{% static 'first_vs/empregister.css' %}">
 </head>
+<style>
+    .error a,.error p{
+        text-align: center;
+        color: rgb(228, 53, 53);
+    }
+    .error{
+        display: flex;
+        justify-content: center;
+    }
+</style>
 <body>
     {% load static %}
     <header>
@@ -21,8 +31,8 @@
                         <a href="{% url 'home' %}"><span class="log"><img src="{% static 'first_vs/logos/home.svg'%}"  alt=""></span>
                         <span class="text1">Home</span></a></li>
                     <li>
-                        <a href="#"><span class="log"><img src="{% static 'first_vs/logos/bag.svg'%}" alt=""></span>
-                        <span class="text">Collections</span></a>
+                        <a href="{% url 'depttable' %}"><span class="log"><img src="{% static 'first_vs/logos/bag.svg'%}" alt=""></span>
+                            <span class="text">Departments</span></a>
                     </li>
                     <li>
                         <a href="#"><span class="log"><img src="{% static 'first_vs/logos/phone.svg'%}" alt=""></span>
@@ -42,7 +52,10 @@
         <div class="main_container">
             <h2> Employee Login </h2>
             <div class="cards">
-                <a href="{% url 'changepassword' %}"> {{ err }} </a>
+               <div class="error">
+                   <a href="{% url 'changepassword' %}"> {{ err }} </a>
+                  <p> {{ err1 }} </p>
+               </div>
                 <form action="" method="post">
                     {% csrf_token %}
                     <p> EmployeeID:</p>

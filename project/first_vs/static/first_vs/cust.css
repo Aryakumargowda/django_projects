@@ -168,15 +168,16 @@ h3{
     justify-content: center;
     margin: 1em;
     overflow: hidden;
-    overflow-y: scroll;
     border-radius: 1.5em;
     color: rgb(75, 61, 75);
     z-index: 2;
     opacity: 1;
 }
 
-.main_content{
-    
+.main_content,.main_content1,.main_content2,.main_content3,.main_content4{
+    overflow-y: scroll;
+    border-radius: .7em;
+    box-shadow: inset 2px 2px 5px rgb(77, 77, 77);
 }
 
 ::-webkit-scrollbar{

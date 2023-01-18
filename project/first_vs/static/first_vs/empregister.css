@@ -115,7 +115,7 @@ span{
 .right ul li:hover .text{
     transform: scale(1);
     transition-delay: .2s;
-    left:1.5em;
+    left:.7em;
     opacity: 1;
 }
 

@@ -24,10 +24,12 @@ class Customer(models.Model):
     adder=models.TextField(max_length=500)
     co_name=models.CharField(max_length=50,blank=False)
     email=models.CharField(max_length=100,blank=False)
+    materials=models.CharField(max_length=100,default="any")
     ord_name=models.CharField(max_length=50,unique=True)
     ord_amt=models.CharField(max_length=20)
     pending_payment=models.CharField(max_length=20)
     date=models.DateField()
+    due_date=models.DateField(null=True)
     def __str__(self):
         return self.namei
 
