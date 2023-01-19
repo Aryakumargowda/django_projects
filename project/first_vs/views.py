@@ -218,12 +218,14 @@ def update(request,id):
         phone=request.POST['phone']
         gst=request.POST['gst']
         co_name=request.POST['co_name']
+        mat=request.POST['material']
         email=request.POST['email']
         ord_name=request.POST['ord_name']
         ob=Customer.objects.get(id=id)
         ob.namei = namei
         ob.email=email
         ob.phone=phone
+        ob.materials=mat
         ob.gst=gst
         ob.co_name=co_name
         ob.ord_name=ord_name
@@ -258,7 +260,7 @@ def e_update(request,id):
         address=request.POST['address']
         gender=request.POST['gender']
         department=request.POST['Department']
-        ob=Employees.objects.get(id=id)
+        ob=Employees.objects.get(pk=id)
         ob.E_name = name
         ob.username=username
         ob.E_address=address
@@ -285,7 +287,7 @@ def e_delete(request,id):
         rts=Department(Dnumber=dno,Dname=name)
         rts.save()
         msg="WARNING!!!,Enter the manager name before proceeding"
-        return render(request,'first_vs/dept_tables.html',{'msg':msg})
+        return redirect ('depttable')
 
 # -------------------------------change emmp-password-----------------------------
 

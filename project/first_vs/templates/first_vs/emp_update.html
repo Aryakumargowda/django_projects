@@ -14,7 +14,7 @@
         <div class="main_container">
             <h2>Employee update</h2>
             <div class="cards">
-                <form action="eupdate/{{gt.id}}" method="POST">
+                <form action="eupdate/{{gt.Ssn}}" method="POST">
                     {% csrf_token %}
                     <p> Name: </p><input type="text" name="name" id="name" placeholder="Name:" value="{{gt.E_name}}">
                     <p> Username:</p>
