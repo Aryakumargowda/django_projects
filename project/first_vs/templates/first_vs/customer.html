@@ -19,11 +19,11 @@
             <div class="right">
                 <ul>
                     <li>
-                        <a href="#"><span class="log"><img src="{% static 'first_vs/logos/home.svg'%}" alt=""></span>
+                        <a href="{% url 'home' %}"><span class="log"><img src="{% static 'first_vs/logos/home.svg'%}" alt=""></span>
                             <span class="text1">Home</span></a>
                     </li>
                     <li>
-                        <a href="#"><span class="log"><img src="{% static 'first_vs/logos/bag.svg'%}" alt=""></span>
+                        <a href="{% url 'home_dept' %}"><span class="log"><img src="{% static 'first_vs/logos/bag.svg'%}" alt=""></span>
                             <span class="text">Departments</span></a>
                     </li>
                     <li>
@@ -31,7 +31,7 @@
                             <span class="text">Contact us</span></a>
                     </li>
                     <li>
-                        <a href="#"><span class="log"><img src="{% static 'first_vs/logos/question.svg'%}"
+                        <a href="{% url 'about' %}"><span class="log"><img src="{% static 'first_vs/logos/question.svg'%}"
                                     alt=""></span>
                             <span class="text1">About</span></a>
                     </li>
@@ -71,7 +71,6 @@
                         <button type="submit"><img src="{% static 'first_vs/logos/publish.svg'%}" alt="submit"></button>
                         <button type="reset">Reset</button>
                     </div>
-                    <a href="{% url 'login' %}">Already Registered? Login</a>
                 </form>
             </div>
             <div class="social_logos">
