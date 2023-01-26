@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Departments</title>
-    <link rel="stylesheet" href="{%static 'first_vs/empregister.css' %}">
+    <link rel="stylesheet" href="{%static 'first_vs/depreg.css' %}">
 </head>
 <body>
     <header>
@@ -24,12 +24,12 @@
                         <span class="text">Departments</span></a>
                     </li>
                     <li>
-                        <a href="#"><span class="log"><img src="{% static 'first_vs/logos/phone.svg'%}" alt=""></span>
-                        <span class="text">Contact us</span></a>
+                        <a href="{% url 'customers' %}"><span class="log"><img src="{% static 'first_vs/logos/phone.svg'%}" alt=""></span>
+                        <span class="text">Customers</span></a>
                     </li>
                     <li>
-                        <a href="{% url 'about' %}"><span class="log"><img src="{% static 'first_vs/logos/question.svg'%}" alt=""></span>
-                        <span class="text1">About</span></a>
+                        <a href="{% url 'emp_tab' %}"><span class="log"><img src="{% static 'first_vs/logos/user.png'%}" alt=""></span>
+                        <span class="text1">Employees</span></a>
                     </li>
 
                 </ul>
@@ -43,8 +43,10 @@
             <div class="cards">
                 <form action="" method="POST">
                     {% csrf_token %}
-                    {{ err }} <br>
-                    {{ err1 }}
+                   <div class="err">
+                       {{ err }} <br>
+                       {{ err1 }}
+                   </div>
                     <p> Department Name: </p><input type="text" name="deptn" id="deptn" placeholder="Department Name:"> 
                     <p> Ssn: </p><input type="text" name="ssn" id="ssn" placeholder="Employee no:"> 
                     <div class="buttons">

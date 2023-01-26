@@ -142,3 +142,40 @@ th{
 .hed :hover{
     background: none;
 }
+
+/* -------------------------------footer--------------------------------- */
+
+.foot_container{
+    background: darkslategray;
+    color: white;
+    padding: 2em;
+}
+
+.foot_container h2{
+    color: rgb(242, 174, 106);
+    text-decoration:underline;
+}
+
+.login_sec ul{
+    list-style: none;
+    /* display: flex;
+    justify-content: space-between;
+    align-items: center; */
+    padding-right: 1.5em;
+    padding-top: .5em;
+}
+
+.login_sec ul a{
+    color: rgb(199, 155, 108);
+    line-height: 1em;
+    
+}
+
+.login_sec ul li{
+    padding: .5em;
+}
+
+.foot{
+    padding: 2em;
+    text-align: center;
+}

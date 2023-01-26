@@ -1,0 +1,325 @@
+*{
+    padding: 0;
+    margin: 0;
+    /* box-sizing: border-box; */
+    font-family: 'poppins',sans-serif;
+}
+/* --------------------------header------------------------ */
+body{
+    background: rgb(120, 204, 204);
+
+}
+header{
+    width: auto;
+    min-height: 5em;
+    /* background:alicebluergb(87, 166, 87) ; */
+    background:rgb(14, 14, 41);
+    padding-left: 1em;
+    padding-right: 1em;
+    box-shadow: 0px 10px 15px rgb(40, 40, 114);
+    z-index: 2;
+}
+
+.head{
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+}
+
+.logo img{
+    width: 3.5em;
+    height: 3.5em;
+}
+
+.left{
+    padding: .4em;
+}
+
+.right ul{
+    /* position: relative; */
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-right: 1.5em;
+    padding-top: .5em;
+    /* background: blue; */
+    /* right: 6em;
+    top: 1.9em; */
+}
+
+
+
+.right ul img{
+    width: 1.3em;
+    height: 1.3em;
+}
+
+a{
+    text-decoration: none;
+    color: black;
+}
+
+.right ul li{
+    position: relative;
+    width: 3em;
+    height: 2em;
+    display: flex;
+    background: rgb(120, 204, 204);
+    justify-content: center;
+    align-items: center;
+    padding: .31em;
+    margin: .31em;
+    border-radius: .5em;
+    transition: .5s;
+}
+
+.right ul li:hover {
+    background: rgb(247, 185, 122);
+    /* border-radius: 1em; */
+    /* transition-delay: .05s; */
+    /* border: 2px solid rgb(83, 165, 200); */
+    width: 8em;
+    box-shadow: 5px 5px 15px rgba(116, 120, 124, 0.882);
+    
+}
+
+.log{
+    position: absolute;
+    right: .5em;
+}
+
+span{
+    top: 1em;
+    right: 1.8em;
+    position: absolute;
+}
+
+.text{
+    position: absolute;
+    top: 1em;
+    right: 1.7em;
+}
+
+
+
+.right ul li .text,.text1{
+    transform: scale(0);
+    transition: .2s;
+    opacity: 0;
+    left: -.90em;
+    text-overflow:ellipsis;
+    font-weight:bold;
+}
+
+.right ul li:hover .text{
+    transform: scale(1);
+    transition-delay: .2s;
+    left:.7em;
+    opacity: 1;
+}
+
+.right ul li:hover .text1{
+    transform: scale(1);
+    transition-delay: .2s;
+    left:1em;
+    opacity: 1;
+}
+
+
+/* -----------------------------------main-------------------------------- */
+
+main{
+    padding-top: 1.5em;
+}
+
+.err{
+    color: rgb(244, 105, 105);
+    padding-bottom: 1em;
+}
+
+.main_container{
+    background: #3a436d;
+    /* background: url(logos/fabric.jpg); */
+    padding: 3em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.main_container h2{
+
+    color: aliceblue;
+    text-decoration: underline;
+}
+
+.main_container .cards{
+    /* background: linear-gradient(45deg,rgba(98, 136, 156, 0.733),rgba(154, 202, 214, 0.559)); */
+    background: rgb(14, 14, 41);
+    color: aliceblue;
+    padding: 2em;
+    padding-left: 1em;
+    padding-right: 1em;
+    border-radius: 1em;
+    margin: 2em;
+    /* display: flex;
+    align-items: center;
+    justify-content:flex-end; */
+    box-shadow: 35px 40px 30px rgb(25, 25, 54);
+    backdrop-filter: blur(10px);
+    min-width: 28em;
+    min-height: 19em;
+    text-align: right;
+}
+
+form{
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+
+form p{
+    padding: .5em;
+    text-align: left;
+   margin-right:18em;
+}
+
+form input{
+    height: 2.6em;
+    width: 29em;
+    padding: .6em;
+    border-radius: 1.2em;
+    border:solid 2px rgb(141, 214, 214);
+    box-shadow: 5px 5px 10px rgb(67, 89, 89);
+    margin-top: 1em;
+    margin-bottom: 3em;
+}
+
+textarea{
+    height: 5em;
+    width: 29em;
+    border-radius: 1.5em;
+    border:solid 2px rgb(141, 214, 214);
+    box-shadow: 10px 10px 15px rgb(99, 128, 128);
+    margin-top: 1em;
+    margin-bottom: 3em;
+}
+
+form button{
+    /* position: absolute; */
+    left: 12em;
+    margin: 0em;
+    bottom: 2em;
+    border: none;
+    /* border: solid 2px rgb(156, 156, 190); */
+    width: 5em;
+    height:2.5em;
+    background: rgb(120, 204, 204);
+    cursor: pointer;
+    transition: .3s;
+    border-radius: .7em;
+    box-shadow: 5px 5px 10px rgba(110, 110, 248, 0.5),inset .05px .5px 10px rgba(110, 110, 248, 0.539);
+    color: rgb(30, 28, 29);
+    font-weight: 600;
+}
+
+.buttons{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* background-color: aqua; */
+    border: none;
+    /* border: solid 2px rgb(156, 156, 190); */
+    width: 15em;
+    height:6.5em;
+    /* background: rgb(126, 145, 165); */
+}
+
+form button img{
+    width: 2em;
+    height:1.5em;
+    /* text-shadow: 2px 2px 10px rgb(84, 81, 81); */
+}
+
+form button:hover{
+    background: linear-gradient(45deg, rgba(197, 173, 106, 0.795),rgb(247, 185, 122));
+    color: white;
+    border: none;
+    height: 2.8em;
+    width: 5.2em;
+    border-radius: 1em;
+    box-shadow: 20px 15px 20px rgb(89, 85, 85);
+}
+
+.main_container .social_logos{
+    padding-top:3em;
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    z-index: 5;
+    opacity: 1;
+}
+
+.main_container .social_logos .logos{
+    box-shadow: 5px 5px 10px rgb(19, 18, 18);
+    padding: 1em;
+    background: rgb(120, 204, 204);
+    max-width: 1.5em;
+    max-height: 1.5em;
+    margin: 1em;
+    border-radius: 1em;
+    transition: .15s;
+}
+
+.main_container .social_logos .logos:hover{
+    box-shadow: 10px 15px 15px rgb(31, 31, 31);
+}
+
+.main_container .social_logos .logos img{
+    /* background-color: black; */
+    width: 1.5em;
+    height: 1.5em;
+    cursor: pointer;
+    /* margin: 1em; */
+    opacity: 1;
+}
+/* --------------------------------footer------------------------------ */
+
+.foot_container{
+    background: darkslategray;
+    color: white;
+    padding: 2em;
+}
+
+.foot_container h2{
+    color: rgb(242, 174, 106);
+    text-decoration:underline;
+}
+
+.login_sec ul{
+    list-style: none;
+    /* display: flex;
+    justify-content: space-between;
+    align-items: center; */
+    padding-right: 1.5em;
+    padding-top: .5em;
+}
+
+.login_sec ul a{
+    color: rgb(199, 155, 108);
+    line-height: 1em;
+    
+}
+
+.login_sec ul li{
+    padding: .5em;
+}
+
+.foot{
+    padding: 2em;
+    text-align: center;
+}

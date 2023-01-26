@@ -8,6 +8,13 @@
     {% load static %}
     <link rel="stylesheet" href="{% static 'first_vs/style.css' %}">
 </head>
+<style>
+    .err{
+        color: rgb(236, 93, 93);
+        padding: 1.2em;
+        border-radius: .7em;
+    }
+</style>
 <body>
     {% load static %}
     <header>
@@ -18,18 +25,18 @@
             <div class="right">
                 <ul>
                     <li>
-                        <a href="#"><span class="log"><img src="{% static 'first_vs/logos/home.svg'%}"  alt=""></span>
+                        <a href="{% url 'home' %}"><span class="log"><img src="{% static 'first_vs/logos/home.svg'%}"  alt=""></span>
                         <span class="text1">Home</span></a></li>
                     <li>
-                        <a href="#"><span class="log"><img src="{% static 'first_vs/logos/bag.svg'%}" alt=""></span>
-                        <span class="text">Collections</span></a>
+                        <a href="{% url 'home_dept' %}"><span class="log"><img src="{% static 'first_vs/logos/department.png'%}" alt=""></span>
+                        <span class="text">Departments</span></a>
                     </li>
                     <li>
-                        <a href="#"><span class="log"><img src="{% static 'first_vs/logos/phone.svg'%}" alt=""></span>
+                        <a href="{% url 'contact' %}"><span class="log"><img src="{% static 'first_vs/logos/phone.svg'%}" alt=""></span>
                         <span class="text">Contact us</span></a>
                     </li>
                     <li>
-                        <a href="#"><span class="log"><img src="{% static 'first_vs/logos/question.svg'%}" alt=""></span>
+                        <a href="{% url 'about' %}"><span class="log"><img src="{% static 'first_vs/logos/question.svg'%}" alt=""></span>
                         <span class="text1">About</span></a>
                     </li>
 
@@ -41,6 +48,7 @@
     <main>
         <div class="main_container">
             <h2> Admin Login </h2>
+              <p class="err"> {{ err }}</p>
             <div class="cards">
                 <form action="" method="post">
                     {% csrf_token %}
@@ -76,7 +84,7 @@
                 </ul>
             </div>
             <div class="foot">
-               <p>Copyright ©️ 2022-2030 | TheProjectGarments | All rights reserved</p> 
+               <p>Copyright ©️ |Arya|Ashika | TheProjectGarments | All rights reserved</p> 
             </div>
         </div>
     </footer>

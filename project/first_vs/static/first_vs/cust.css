@@ -228,6 +228,27 @@ h3{
     opacity: 1
 }
 
+.content2.active .mate1{
+    background: rgb(159, 159, 159);
+    border-radius: 1em;
+}
+
+.content3.active .ord2{
+    background: rgb(159, 159, 159);
+    border-radius: 1em;
+}
+
+.content4.active .payments3{
+    background: rgb(159, 159, 159);
+    border-radius: 1em;
+}
+
+.content5.active .bal4{
+    background: rgb(159, 159, 159);
+    border-radius: 1em;
+}
+
+
 /* -----------------control_bar div hover-------------- */
 
 .control_bar div:hover{

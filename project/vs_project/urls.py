@@ -47,9 +47,11 @@ urlpatterns = [
     path('dept/',views.dept,name='dept'),
     path('depttab/',views.dept_view,name='depttable'),
     path('about/',views.about,name='about'),
-    path('hdept',views.home_dpt,name='home_dept'),
+    path('hdept/',views.home_dpt,name='home_dept'),
     path('depedit/<int:id>',views.dep_up,name="deptupdate"),
     path('depedit/depupdate/<int:id>',views.dep_update,name='dupdater'),
+    path('depdel/<int:id>',views.dep_del,name='dept_del'),
+    path('contact/',views.contact,name='contact'),
 
     ]
 

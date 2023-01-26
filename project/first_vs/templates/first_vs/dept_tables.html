@@ -96,7 +96,7 @@
                     <td>{{ i.Ssn }}</td>
                     <td class="but"><a href="{% url 'deptupdate' i.Dnumber%}"><button>Edit</button></a></td>
                     <td>
-                        <form action="" method="post">
+                        <form action="{% url 'dept_del' i.Dnumber %}" method="post">
                             {% csrf_token %}
                             <input type="submit" name="delete" id="delete" value="Delete">
                         </form>

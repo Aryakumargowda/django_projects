@@ -21,6 +21,7 @@ def login(request):
         password=request.POST['pass']  
         # pwd=fernet.encrypt(password.encode())
         flag=1
+        err='User name or password is incorrect.'
         chk=Registered_user.objects.all()
         for i in chk:
             # pwd1=fernet.decrypt(i.pwd1).decode()
@@ -28,7 +29,7 @@ def login(request):
                 flagg=1
                 usr==username
                 return redirect('customers')
-        return redirect('err')
+        return render(request, 'first_vs/login.html',{'err':err})
     return render(request, 'first_vs/login.html')
     
 def reg(request):
@@ -170,7 +171,7 @@ def emplogin(request):
         chk=Employees.objects.all()
         for i in chk:
             if i.username==username and i.password=='0':
-                err="You might be loging in  for the first time,Please change the password before loging in."
+                err="You might be loging in  for the first time, Please change the password before loging in."
                 return render(request,'first_vs/emp_login.html',{'err':err})
             elif i.username==username and i.password==password:
                 flagg=1
@@ -337,7 +338,7 @@ def dept(request):
                         mgr+=1
                 mgrssn=mgr
                 nam=Employees.objects.get(pk=essn)
-                reg=Department(Dnumber=ssn,Dname=dname,D_manager=nam.E_name,mgr_ssn=mgrssn,Ssn=essn)
+                reg=Department(Dnumber=mgrssn,Dname=dname,D_manager=nam.E_name,mgr_ssn=mgrssn,Ssn=essn)
                 reg.save()
                 return redirect('depttable')
         if flag==0:
@@ -376,6 +377,15 @@ def dep_update(request,id):
         ob.save()
         return redirect('depttable')
 
+def dep_del(request,id):
+    if request.method=='POST':
+        dep=Department.objects.get(pk=id)
+        dep.delete()
+        return redirect('depttable')
+    
+
+def contact(request):
+    return render(request,'first_vs/contact.html')
 def succ(request):
     return render(request, 'first_vs/succ.html')
 
